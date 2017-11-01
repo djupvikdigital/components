@@ -29,6 +29,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "uniqid": "^4.1.1"
+    "uniqueid": "^1.0.0"
   }
 }
