@@ -8,6 +8,19 @@
   },
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
   "devDependencies": {
     "@types/enzyme": "^3.1.2",
     "@types/enzyme-adapter-react-16": "^1.0.0",

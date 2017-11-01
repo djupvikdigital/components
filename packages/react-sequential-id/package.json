@@ -14,19 +14,6 @@
   ],
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
-  },
   "devDependencies": {},
   "dependencies": {
     "react-elementary": "^1.1.0",
