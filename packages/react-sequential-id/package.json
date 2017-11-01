@@ -29,6 +29,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "react-elementary": "^1.1.0",
     "uniqueid": "^1.0.0"
   }
 }
