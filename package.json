@@ -4,6 +4,7 @@
   "description": "Monorepo for React components",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
