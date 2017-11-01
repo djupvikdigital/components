@@ -1,0 +1,19 @@
+{
+  "name": "react-sequential-id",
+  "version": "0.1.0",
+  "description": "React component for generating sequential IDs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "id",
+    "sequential",
+    "id",
+    "unique",
+    "id"
+  ],
+  "author": "Reidar Djupvik <reidar@djupvik.digital>",
+  "license": "MIT"
+}
