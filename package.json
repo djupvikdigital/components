@@ -4,7 +4,7 @@
   "description": "Monorepo for React components",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
