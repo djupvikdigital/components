@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Reidar Djupvik <mail@3rdhand.info>",
+  "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
   "devDependencies": {
     "lerna": "^2.4.0"
