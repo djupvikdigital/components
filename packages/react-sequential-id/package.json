@@ -21,7 +21,7 @@
     "typescript": "^2.6.1"
   },
   "dependencies": {
-    "react-elementary": "^1.1.0",
+    "react-elementary": "^2.0.0-beta.4",
     "uniqueid": "^1.0.0"
   }
 }
