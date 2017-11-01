@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "clean": "rm -f lib/*",
+    "prepublish": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
