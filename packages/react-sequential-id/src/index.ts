@@ -1,3 +1,5 @@
+import uniqueid from 'uniqueid'
+
 export interface ISequentialIdProps {
   children: (id: string) => React.ReactElement<any> | null
 }
@@ -9,3 +11,5 @@ export function withIdFactory(factory: Function): SequentialId {
     return children(factory())
   }
 }
+
+export default withIdFactory(uniqueid('i'))
