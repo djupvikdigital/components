@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react", "id", "sequential id", "unique id"],
+  "keywords": [
+    "react",
+    "id",
+    "sequential id",
+    "unique id"
+  ],
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
   "jest": {
@@ -14,6 +19,16 @@
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "uniqid": "^4.1.1"
   }
 }
