@@ -28,7 +28,7 @@ function ReactComponent() {
 
 ### withIdFactory
 
-Use this helper iff you want to use your own factory function for generating
+Use this helper if you want to use your own factory function for generating
 IDs.
 
 ```javascript
