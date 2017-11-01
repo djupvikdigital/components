@@ -10,7 +10,7 @@ npm install react-sequential-id
 
 ## Usage
 
-```javascript
+```jsx
 import SequentialId from 'react-sequential-id'
 
 function ReactComponent() {
