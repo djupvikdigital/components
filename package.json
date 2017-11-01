@@ -2,6 +2,7 @@
   "name": "components",
   "version": "1.0.0",
   "description": "Monorepo for React components",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "tsc",
