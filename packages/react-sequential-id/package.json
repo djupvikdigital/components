@@ -4,6 +4,7 @@
   "description": "React component for generating sequential IDs",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,7 +15,9 @@
   ],
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^2.6.1"
+  },
   "dependencies": {
     "react-elementary": "^1.1.0",
     "uniqueid": "^1.0.0"
