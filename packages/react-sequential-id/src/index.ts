@@ -8,7 +8,7 @@ export interface ISequentialIdProps {
 export type SequentialIdComponent = StatelessComponent<ISequentialIdProps>
 export type SequentialIdSFC = SFC<ISequentialIdProps>
 
-export function withIdFactory(factory: Function): SequentialIdSFC {
+export function withIdFactory(factory: () => string): SequentialIdSFC {
   return function SequentialId({ children }: ISequentialIdProps) {
     return children(factory())
   }
