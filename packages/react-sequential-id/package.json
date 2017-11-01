@@ -9,10 +9,8 @@
   "keywords": [
     "react",
     "id",
-    "sequential",
-    "id",
-    "unique",
-    "id"
+    "sequential id",
+    "unique id"
   ],
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT"
