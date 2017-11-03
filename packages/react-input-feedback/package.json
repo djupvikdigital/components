@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/thirdhand/components/issues"
   },
-  "homepage": "https://github.com/thirdhand/components#readme"
+  "homepage": "https://github.com/thirdhand/components#readme",
+  "dependencies": {
+    "react": "^16.0.0"
+  }
 }
