@@ -23,5 +23,10 @@
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
     "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/redux-form": "^7.0.8",
+    "react-redux": "^5.0.6",
+    "redux-form": "^7.1.2"
   }
 }
