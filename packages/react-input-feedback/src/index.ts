@@ -23,7 +23,7 @@ function Input({ components, input, meta, ...props }: InputProps) {
     components.wrapper,
     {},
     r(components.input, { ...props, ...input }),
-    showError && r(components.error),
+    showError && r(components.error, {}, error),
   )
 }
 
