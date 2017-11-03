@@ -22,7 +22,11 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
-    "react": "^16.0.0"
+    "@types/ramda": "^0.25.0",
+    "@types/recompose": "^0.24.2",
+    "ramda": "^0.25.0",
+    "react": "^16.0.0",
+    "recompose": "^0.26.0"
   },
   "devDependencies": {
     "@types/redux-form": "^7.0.8",
