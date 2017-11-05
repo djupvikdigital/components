@@ -1,6 +1,6 @@
 {
   "name": "react-sequential-id",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "React component for generating sequential IDs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
