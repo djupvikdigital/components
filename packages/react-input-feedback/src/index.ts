@@ -1,5 +1,6 @@
 import { defaultTo, lensProp, merge, over, pipe } from 'ramda'
 import { ComponentClass, createElement as r, SFC } from 'react'
+import SequentialId from 'react-sequential-id'
 import { mapProps } from 'recompose'
 import { WrappedFieldProps } from 'redux-form'
 
@@ -19,11 +20,18 @@ export type PartialInputProps = Partial<IInputProps> & WrappedFieldProps
 function Input({ components, input, meta, ...props }: InputProps) {
   const { error, touched } = meta
   const showError = touched && !!error
-  return r(
-    components.wrapper,
-    {},
-    r(components.input, { 'aria-invalid': showError, ...props, ...input }),
-    showError && r(components.error, {}, error),
+  return r(SequentialId, {}, (errorId: string) =>
+    r(
+      components.wrapper,
+      {},
+      r(components.input, {
+        'aria-describedby': showError ? errorId : null,
+        'aria-invalid': showError,
+        ...props,
+        ...input,
+      }),
+      showError && r(components.error, { id: errorId }, error),
+    ),
   )
 }
 

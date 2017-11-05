@@ -83,4 +83,21 @@ describe('Input', () => {
         .attr('aria-invalid'),
     ).toBe('false')
   })
+
+  test('sets aria-describedby and error component id', () => {
+    const wrapper = render(
+      r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+    )
+    const describedby = wrapper
+      .children()
+      .eq(0)
+      .attr('aria-describedby')
+    expect(describedby).toBeDefined()
+    expect(describedby).toBe(
+      wrapper
+        .children()
+        .eq(1)
+        .attr('id'),
+    )
+  })
 })
