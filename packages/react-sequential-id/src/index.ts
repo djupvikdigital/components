@@ -8,7 +8,8 @@ export interface ISequentialIdProps {
 export type SequentialIdSFC = SFC<ISequentialIdProps>
 
 export function withIdFactory(factory: () => string): SequentialIdSFC {
-  return function SequentialId({ children }: ISequentialIdProps) {
+  return function SequentialId(props = { children: () => null }) {
+    const { children } = props
     return children(factory())
   }
 }
