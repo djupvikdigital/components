@@ -22,7 +22,7 @@ function Input({ components, input, meta, ...props }: InputProps) {
   return r(
     components.wrapper,
     {},
-    r(components.input, { ...props, ...input }),
+    r(components.input, { 'aria-invalid': showError, ...props, ...input }),
     showError && r(components.error, {}, error),
   )
 }
