@@ -1,11 +1,10 @@
-import { ReactElement, SFC, StatelessComponent } from 'react'
+import { ReactElement, SFC } from 'react'
 import uniqueid = require('uniqueid')
 
 export interface ISequentialIdProps {
   children: (id: string) => ReactElement<any> | null
 }
 
-export type SequentialIdComponent = StatelessComponent<ISequentialIdProps>
 export type SequentialIdSFC = SFC<ISequentialIdProps>
 
 export function withIdFactory(factory: () => string): SequentialIdSFC {
@@ -14,6 +13,6 @@ export function withIdFactory(factory: () => string): SequentialIdSFC {
   }
 }
 
-const DefaultComponent: SequentialIdComponent = withIdFactory(uniqueid('i'))
+const DefaultComponent: SequentialIdSFC = withIdFactory(uniqueid('i'))
 
 export default DefaultComponent
