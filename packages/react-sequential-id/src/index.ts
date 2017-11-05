@@ -2,14 +2,14 @@ import { ReactElement, SFC } from 'react'
 import uniqueid = require('uniqueid')
 
 export interface ISequentialIdProps {
-  children: (id: string) => ReactElement<any> | null
+  children?: (id: string) => ReactElement<any> | null
 }
 
 export type SequentialIdSFC = SFC<ISequentialIdProps>
 
 export function withIdFactory(factory: () => string): SequentialIdSFC {
-  return function SequentialId(props = { children: () => null }) {
-    const { children } = props
+  return function SequentialId(props: ISequentialIdProps) {
+    const { children = () => null } = props
     return children(factory())
   }
 }
