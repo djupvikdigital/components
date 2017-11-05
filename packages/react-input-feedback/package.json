@@ -26,6 +26,7 @@
     "@types/recompose": "^0.24.2",
     "ramda": "^0.25.0",
     "react": "^16.0.0",
+    "react-sequential-id": "^0.1.4",
     "recompose": "^0.26.0"
   },
   "devDependencies": {
