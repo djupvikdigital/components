@@ -5,13 +5,13 @@ import { WrappedFieldProps } from 'redux-form'
 export type Component<P> = string | ComponentClass<P> | SFC<P>
 
 export interface IInputComponents {
-  error: Component<any>
-  input: Component<any>
-  wrapper: Component<any>
+  error?: Component<any>
+  input?: Component<any>
+  wrapper?: Component<any>
 }
 
 export interface IInputProps {
-  components: IInputComponents
+  components?: IInputComponents
 }
 
 export type InputProps = IInputProps & WrappedFieldProps
@@ -19,7 +19,7 @@ export type InputProps = IInputProps & WrappedFieldProps
 export { ISequentialIdProps }
 
 function Input({ components: c = {}, input, meta, ...props }: InputProps) {
-  const components: IInputComponents = {
+  const components = {
     error: 'span',
     input: 'input',
     wrapper: 'span',
