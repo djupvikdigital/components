@@ -16,7 +16,7 @@ export interface IInputProps {
 
 export type InputProps = IInputProps & WrappedFieldProps
 
-function Input({
+export default function InputFeedback({
   components: c = {},
   input,
   meta,
@@ -44,5 +44,3 @@ function Input({
     ),
   )
 }
-
-export default Input
