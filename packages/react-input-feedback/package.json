@@ -1,6 +1,6 @@
 {
   "name": "react-input-feedback",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Form field component with feedback",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -26,8 +26,6 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
-    "@types/ramda": "^0.25.0",
-    "@types/recompose": "^0.24.2",
     "react": "^16.0.0",
     "react-sequential-id": "^0.1.8"
   },
