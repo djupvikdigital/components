@@ -1,23 +1,30 @@
-import { defaultTo, lensProp, merge, over, pipe } from 'ramda'
 import { ComponentClass, createElement as r, SFC } from 'react'
-import SequentialId from 'react-sequential-id'
-import { mapProps } from 'recompose'
+import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
 import { WrappedFieldProps } from 'redux-form'
 
 export type Component<P> = string | ComponentClass<P> | SFC<P>
 
+export interface IInputComponents {
+  error: Component<any>
+  input: Component<any>
+  wrapper: Component<any>
+}
+
 export interface IInputProps {
-  components: {
-    error: Component<any>
-    input: Component<any>
-    wrapper: Component<any>
-  }
+  components: IInputComponents
 }
 
 export type InputProps = IInputProps & WrappedFieldProps
-export type PartialInputProps = Partial<IInputProps> & WrappedFieldProps
 
-function Input({ components, input, meta, ...props }: InputProps) {
+export { ISequentialIdProps }
+
+function Input({ components: c = {}, input, meta, ...props }: InputProps) {
+  const components: IInputComponents = {
+    error: 'span',
+    input: 'input',
+    wrapper: 'span',
+    ...c,
+  }
   const { error, touched } = meta
   const showError = touched && !!error
   return r(SequentialId, {}, (errorId: string) =>
@@ -35,16 +42,4 @@ function Input({ components, input, meta, ...props }: InputProps) {
   )
 }
 
-const withDefaultComponents: (
-  component: Component<InputProps>,
-) => Component<PartialInputProps> = mapProps(
-  over(
-    lensProp('components'),
-    pipe(
-      defaultTo({}),
-      merge({ error: 'span', input: 'input', wrapper: 'span' }),
-    ),
-  ),
-)
-
-export default withDefaultComponents(Input)
+export default Input
