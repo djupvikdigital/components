@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
-    "react": "^16.1.0"
+    "react": "^16.1.0",
+    "react-sequential-id": "^0.1.8"
   }
 }
