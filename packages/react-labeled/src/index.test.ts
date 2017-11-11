@@ -37,4 +37,13 @@ describe('labeled', () => {
     const label = wrapper.children().eq(0)
     expect(label.text()).toBe(labelText)
   })
+
+  test('sets hidden on the wrapper', () => {
+    const component = labeled('input')
+    const labelText = 'Label'
+    const wrapper = render(r(component, { hidden: true, label: labelText }))
+    const input = wrapper.children().eq(1)
+    expect(wrapper.attr('hidden')).toBe('hidden')
+    expect(input.attr('hidden')).toBeUndefined()
+  })
 })
