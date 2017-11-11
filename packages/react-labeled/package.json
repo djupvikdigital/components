@@ -1,0 +1,25 @@
+{
+  "name": "react-labeled",
+  "version": "0.1.0",
+  "description": "HOC to add a label to a form field",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thirdhand/components.git"
+  },
+  "keywords": [
+    "react",
+    "redux-form",
+    "label",
+    "react-component"
+  ],
+  "author": "Reidar Djupvik <reidar@djupvik.digital>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thirdhand/components/issues"
+  },
+  "homepage": "https://github.com/thirdhand/components#readme"
+}
