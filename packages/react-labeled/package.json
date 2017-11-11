@@ -24,6 +24,7 @@
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
     "react": "^16.1.0",
-    "react-sequential-id": "^0.1.8"
+    "react-sequential-id": "^0.1.8",
+    "recompose": "^0.26.0"
   }
 }
