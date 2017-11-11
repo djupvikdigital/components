@@ -29,4 +29,12 @@ describe('labeled', () => {
     expect(htmlFor).toBeDefined()
     expect(htmlFor).toBe(input.attr('id'))
   })
+
+  test('renders children into label if label prop not provided', () => {
+    const component = labeled('input')
+    const labelText = 'Label'
+    const wrapper = render(r(component, {}, labelText))
+    const label = wrapper.children().eq(0)
+    expect(label.text()).toBe(labelText)
+  })
 })
