@@ -12,11 +12,13 @@ export interface ILabeledProps<T> extends HTMLAttributes<T> {
   label?: ReactNode
 }
 
+export type LabeledProps<P, T> = ILabeledProps<T> & P
+
 export default function labeled(
   BaseComponent: ReactType,
   LabelComponent = 'label',
 ) {
-  const LabeledComponent: SFC<ILabeledProps<any>> = ({
+  const LabeledComponent: SFC<LabeledProps<any, any>> = ({
     children,
     component = 'p',
     hidden,

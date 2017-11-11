@@ -46,4 +46,13 @@ describe('labeled', () => {
     expect(wrapper.attr('hidden')).toBe('hidden')
     expect(input.attr('hidden')).toBeUndefined()
   })
+
+  test('sets other props on the input', () => {
+    const component = labeled('input')
+    const labelText = 'Label'
+    const type = 'text'
+    const wrapper = render(r(component, { type, label: labelText }))
+    const input = wrapper.children().eq(1)
+    expect(input.attr('type')).toBe(type)
+  })
 })
