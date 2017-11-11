@@ -17,7 +17,7 @@ export type LabeledProps<P, T> = ILabeledProps<T> & P
 
 export default function labeled(
   BaseComponent: ReactType,
-  LabelComponent = 'label',
+  LabelComponent: ReactType = 'label',
 ) {
   const LabeledComponent: SFC<LabeledProps<any, any>> = ({
     children,
