@@ -18,4 +18,15 @@ describe('labeled', () => {
     expect(label.text()).toBe(labelText)
     expect(input.is('input')).toBe(true)
   })
+
+  test('sets for and id attributes', () => {
+    const component = labeled('input')
+    const labelText = 'Label'
+    const wrapper = render(r(component, { label: labelText }))
+    const label = wrapper.children().eq(0)
+    const htmlFor = label.attr('for')
+    const input = wrapper.children().eq(1)
+    expect(htmlFor).toBeDefined()
+    expect(htmlFor).toBe(input.attr('id'))
+  })
 })

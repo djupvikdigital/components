@@ -1,4 +1,5 @@
 import { createElement as r, ReactNode, ReactType, SFC } from 'react'
+import SequentialId from 'react-sequential-id'
 
 export interface ILabeledProps {
   component?: ReactType
@@ -15,11 +16,13 @@ export default function labeled(
     label,
     ...props,
   }) =>
-    r(
-      component,
-      {},
-      r(LabelComponent, {}, label || children),
-      r(BaseComponent, props),
+    r(SequentialId, {}, (id: string) =>
+      r(
+        component,
+        {},
+        r(LabelComponent, { htmlFor: id }, label || children),
+        r(BaseComponent, { id, ...props }),
+      ),
     )
   return LabeledComponent
 }
