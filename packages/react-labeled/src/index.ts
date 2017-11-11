@@ -6,6 +6,7 @@ import {
   SFC,
 } from 'react'
 import SequentialId from 'react-sequential-id'
+import { wrapDisplayName } from 'recompose'
 
 export interface ILabeledProps<T> extends HTMLAttributes<T> {
   component?: ReactType
@@ -33,5 +34,9 @@ export default function labeled(
         r(BaseComponent, { id, ...props }),
       ),
     )
+  LabeledComponent.displayName = wrapDisplayName(
+    BaseComponent as any,
+    'labeled',
+  )
   return LabeledComponent
 }

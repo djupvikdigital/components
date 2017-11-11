@@ -55,4 +55,9 @@ describe('labeled', () => {
     const input = wrapper.children().eq(1)
     expect(input.attr('type')).toBe(type)
   })
+
+  test('wraps the displayName of the wrapped component', () => {
+    const component = labeled('input')
+    expect(component.displayName).toBe('labeled(input)')
+  })
 })
