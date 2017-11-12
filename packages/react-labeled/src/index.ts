@@ -1,25 +1,20 @@
-import {
-  createElement as r,
-  HTMLAttributes,
-  ReactNode,
-  ReactType,
-  SFC,
-} from 'react'
+import { AllHTMLAttributes, createElement as r, ReactNode, ReactType, SFC } from 'react'
 import SequentialId from 'react-sequential-id'
 import { wrapDisplayName } from 'recompose'
 
-export interface ILabeledProps<T> extends HTMLAttributes<T> {
+export interface ILabeledProps {
   component?: ReactType
+  hidden?: boolean
   label?: ReactNode
 }
 
-export type LabeledProps<P, T> = ILabeledProps<T> & P
+export type LabeledProps<P> = ILabeledProps & P
 
 export default function labeled(
-  BaseComponent: ReactType,
+  BaseComponent: ReactType<AllHTMLAttributes<any>>,
   LabelComponent: ReactType = 'label',
 ) {
-  const LabeledComponent: SFC<LabeledProps<any, any>> = ({
+  const LabeledComponent: SFC<any> = ({
     children,
     component = 'p',
     hidden,
