@@ -1,8 +1,8 @@
 import { configure, render } from 'enzyme'
 import Adapter = require('enzyme-adapter-react-16')
-import { ComponentClass, createElement as r, InputHTMLAttributes } from 'react'
+import { createElement as r, InputHTMLAttributes } from 'react'
 
-import labeled, { ILabeledProps } from './'
+import labeled from './'
 
 configure({ adapter: new Adapter() })
 
