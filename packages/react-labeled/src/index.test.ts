@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() })
 
 describe('labeled', () => {
   test('takes a base component and returns a component taking a label', () => {
-    const component = labeled<InputHTMLAttributes<any>>('input')
+    const component = labeled('input')
     const labelText = 'Label'
     const wrapper = render(r(component, { label: labelText }) as any)
     const label = wrapper.children().eq(0)
