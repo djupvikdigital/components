@@ -1,6 +1,6 @@
 import { configure, render } from 'enzyme'
 import Adapter = require('enzyme-adapter-react-16')
-import { ComponentType, createElement as r } from 'react'
+import { ComponentClass, createElement as r, InputHTMLAttributes } from 'react'
 
 import labeled, { ILabeledProps } from './'
 
@@ -8,9 +8,9 @@ configure({ adapter: new Adapter() })
 
 describe('labeled', () => {
   test('takes a base component and returns a component taking a label', () => {
-    const component = labeled('input')
+    const component = labeled<InputHTMLAttributes<any>>('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, { label: labelText }))
+    const wrapper = render(r(component, { label: labelText }) as any)
     const label = wrapper.children().eq(0)
     const input = wrapper.children().eq(1)
     expect(wrapper.is('p')).toBe(true)
@@ -22,7 +22,7 @@ describe('labeled', () => {
   test('sets for and id attributes', () => {
     const component = labeled('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, { label: labelText }))
+    const wrapper = render(r(component, { label: labelText }) as any)
     const label = wrapper.children().eq(0)
     const htmlFor = label.attr('for')
     const input = wrapper.children().eq(1)
@@ -33,7 +33,7 @@ describe('labeled', () => {
   test('renders children into label if label prop not provided', () => {
     const component = labeled('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, {}, labelText))
+    const wrapper = render(r(component, {}, labelText) as any)
     const label = wrapper.children().eq(0)
     expect(label.text()).toBe(labelText)
   })
@@ -41,17 +41,20 @@ describe('labeled', () => {
   test('sets hidden on the wrapper', () => {
     const component = labeled('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, { hidden: true, label: labelText }))
+    const wrapper = render(r(component, {
+      hidden: true,
+      label: labelText,
+    }) as any)
     const input = wrapper.children().eq(1)
     expect(wrapper.attr('hidden')).toBe('hidden')
     expect(input.attr('hidden')).toBeUndefined()
   })
 
   test('sets other props on the input', () => {
-    const component = labeled('input')
+    const component = labeled<InputHTMLAttributes<any>>('input')
     const labelText = 'Label'
     const type = 'text'
-    const wrapper = render(r(component, { type, label: labelText }))
+    const wrapper = render(r(component, { type, label: labelText }) as any)
     const input = wrapper.children().eq(1)
     expect(input.attr('type')).toBe(type)
   })
