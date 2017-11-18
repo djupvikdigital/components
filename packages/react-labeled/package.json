@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "HOC to add a label to a form field",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -f lib/*",
