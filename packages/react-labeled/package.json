@@ -4,6 +4,9 @@
   "description": "HOC to add a label to a form field",
   "main": "lib/index.js",
   "scripts": {
+    "build": "tsc",
+    "clean": "rm -f lib/*",
+    "prepublish": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +31,8 @@
     "react": "^16.1.1",
     "react-sequential-id": "^0.1.8",
     "recompose": "^0.26.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1"
   }
 }
