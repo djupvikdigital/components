@@ -33,7 +33,7 @@ export default function labeled<P = {}>(
         component,
         { hidden },
         r(LabelComponent, { htmlFor: id }, label || children),
-        r(BaseComponent, { id, ...props }),
+        r(BaseComponent, { id, ...props }, label && children),
       ),
     )
   LabeledComponent.displayName = wrapDisplayName(

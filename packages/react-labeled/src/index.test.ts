@@ -63,4 +63,26 @@ describe('labeled', () => {
     const component = labeled('input')
     expect(component.displayName).toBe('labeled(input)')
   })
+
+  test('can render a component with children other than label', () => {
+    const component = labeled('select')
+    const labelText = 'Label'
+    const wrapper = render(
+      r(component, { label: labelText }, r('option', {}, 'Option')) as any,
+    )
+    const label = wrapper.children().eq(0)
+    const select = wrapper.children().eq(1)
+    expect(label.text()).toBe(labelText)
+    expect(select.html()).toBe('<option>Option</option>')
+  })
+
+  test('will not render children as children if there is no label', () => {
+    const component = labeled('select')
+    const labelText = 'Label'
+    const wrapper = render(r(component, {}, labelText) as any)
+    const label = wrapper.children().eq(0)
+    const select = wrapper.children().eq(1)
+    expect(label.text()).toBe(labelText)
+    expect(select.html()).toBe('')
+  })
 })
