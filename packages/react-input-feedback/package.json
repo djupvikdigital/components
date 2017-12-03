@@ -26,15 +26,15 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
-    "@types/react": "^16.0.22",
-    "react": "^16.0.0",
+    "@types/react": "^16.0.26",
+    "react": "^16.2.0",
     "react-sequential-id": "^0.1.8"
   },
   "devDependencies": {
-    "@types/redux-form": "^7.0.8",
+    "@types/redux-form": "^7.0.9",
     "ramda": "^0.25.0",
     "react-redux": "^5.0.6",
-    "redux-form": "^7.1.2",
-    "typescript": "^2.6.1"
+    "redux-form": "^7.2.0",
+    "typescript": "^2.6.2"
   }
 }
