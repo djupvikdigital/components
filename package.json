@@ -26,17 +26,17 @@
     ]
   },
   "devDependencies": {
-    "@types/enzyme": "^3.1.2",
-    "@types/enzyme-adapter-react-16": "^1.0.0",
-    "@types/jest": "^21.1.5",
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-16": "^1.0.2",
+    "@types/enzyme": "^3.1.5",
+    "@types/enzyme-adapter-react-16": "^1.0.1",
+    "@types/jest": "^21.1.8",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "jest": "^21.2.1",
-    "lerna": "^2.4.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "ts-jest": "^21.1.4",
+    "lerna": "^2.5.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "ts-jest": "^21.2.4",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.2"
   }
 }
