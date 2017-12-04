@@ -23,7 +23,7 @@
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.2"
   },
   "dependencies": {
     "uniqueid": "^1.0.0"
