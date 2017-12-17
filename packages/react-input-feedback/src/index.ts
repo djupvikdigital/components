@@ -19,7 +19,7 @@ export type InputProps = IInputProps & WrappedFieldProps
 export default function InputFeedback({
   components: c = {},
   input,
-  meta,
+  meta = { error: null, touched: false },
   ...props,
 }: InputProps): SFCElement<ISequentialIdProps> {
   const components = {
