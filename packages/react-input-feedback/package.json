@@ -31,10 +31,6 @@
     "react-sequential-id": "^0.1.8"
   },
   "devDependencies": {
-    "@types/redux-form": "^7.0.9",
-    "ramda": "^0.25.0",
-    "react-redux": "^5.0.6",
-    "redux-form": "^7.2.0",
     "typescript": "^2.6.2"
   }
 }
