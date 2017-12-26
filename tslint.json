@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "arrow-parens": [true, "ban-single-arg-parens"],
         "quotemark": [true, "single"],
         "semicolon": [true, "never"],
         "trailing-comma": [true, { "typeLiterals": "ignore" }]
