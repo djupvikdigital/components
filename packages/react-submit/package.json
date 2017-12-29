@@ -4,6 +4,9 @@
   "description": "Redux Form compatible submit button",
   "main": "lib/index.js",
   "scripts": {
+    "build": "tsc",
+    "clean": "rm -f lib/*",
+    "prepublish": "npm run clean && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +28,8 @@
   "dependencies": {
     "@types/react": "^16.0.31",
     "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.2"
   }
 }
