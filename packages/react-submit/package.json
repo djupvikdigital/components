@@ -1,8 +1,9 @@
 {
   "name": "react-submit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Redux Form compatible submit button",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -f lib/*",
