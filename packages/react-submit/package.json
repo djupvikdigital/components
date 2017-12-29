@@ -15,6 +15,7 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "redux-form",
     "submit",
     "value"
