@@ -8,11 +8,11 @@ const r = React.createElement
 
 export default function SubmitButton({
   children,
-  input = { onChange: null },
+  input = { name: '', onChange: null },
   meta,
   ...props
 }: SubmitButtonProps) {
-  const { onChange } = input
+  const { name, onChange } = input
   const onClick = typeof onChange === 'function' ? () => onChange(true) : null
-  return r('button', { ...props, onClick, type: 'submit' }, children)
+  return r('button', { ...props, name, onClick, type: 'submit' }, children)
 }

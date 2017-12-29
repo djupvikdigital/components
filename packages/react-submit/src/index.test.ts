@@ -51,6 +51,14 @@ describe('SubmitButton', () => {
     expect(wrapper.text()).toBe(buttonText)
   })
 
+  it('adds the name of the input prop to the button', () => {
+    const name = 'foo'
+    const wrapper = render(
+      r(SubmitButton, createInputProps({ input: { name } })),
+    )
+    expect(wrapper.attr('name')).toBe(name)
+  })
+
   it('takes an onChange prop with a callback function', () => {
     const onChange = jest.fn()
     const wrapper = shallow(
