@@ -1,17 +1,18 @@
-import { createElement as r, DetailedReactHTMLElement, HTMLProps } from 'react'
+import * as React from 'react'
 import { WrappedFieldProps } from 'redux-form'
 
-export type ButtonProps = HTMLProps<HTMLButtonElement>
+export type ButtonProps = React.HTMLProps<HTMLButtonElement>
 export type SubmitButtonProps = ButtonProps & WrappedFieldProps
 
-function changeHandler(callback: any) {
-  return typeof callback === 'function' ? callback : null
-}
+const r = React.createElement
 
-export default function SubmitButton(
-  { children, input = { onChange: null }, ...props }: SubmitButtonProps,
-): DetailedReactHTMLElement<ButtonProps, HTMLButtonElement> {
+export default function SubmitButton({
+  children,
+  input = { onChange: null },
+  meta,
+  ...props
+}: SubmitButtonProps) {
   const { onChange } = input
-  const onClick = changeHandler(onChange)
+  const onClick = typeof onChange === 'function' ? () => onChange(true) : null
   return r('button', { ...props, onClick, type: 'submit' }, children)
 }

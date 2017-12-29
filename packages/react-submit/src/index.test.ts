@@ -1,7 +1,10 @@
-import { configure, render, shallow } from 'enzyme'
+import { configure, mount, render, shallow } from 'enzyme'
 import Adapter = require('enzyme-adapter-react-16')
-import { mergeDeepRight } from 'ramda'
+import { identity, mergeDeepRight } from 'ramda'
 import { createElement as r } from 'react'
+import { Provider } from 'react-redux'
+import { combineReducers, createStore } from 'redux'
+import { Field, reducer, reduxForm } from 'redux-form'
 
 import SubmitButton from './'
 
@@ -33,6 +36,10 @@ const createInputProps = mergeDeepRight({
   },
 })
 
+function Form({ children, handleSubmit }) {
+  return r('form', { onSubmit: handleSubmit }, children)
+}
+
 configure({ adapter: new Adapter() })
 
 describe('SubmitButton', () => {
@@ -51,5 +58,56 @@ describe('SubmitButton', () => {
     )
     wrapper.simulate('click')
     expect(onChange.mock.calls.length).toBe(1)
+  })
+
+  it('submits the value when clicked with Redux Form', done => {
+    const expected = { foo: true }
+    const onSubmit = values => {
+      expect(values).toEqual(expected)
+      done()
+    }
+    const store = createStore(combineReducers({ form: reducer }))
+    const wrapper = mount(
+      r(
+        Provider,
+        { store },
+        r(
+          reduxForm({ form: 'form', initialValues: {} })(Form as any),
+          { onSubmit },
+          r(Field, { component: SubmitButton, name: 'foo' }),
+        ),
+      ),
+      { attachTo: document.body },
+    )
+    const event = document.createEvent('HTMLEvents')
+    event.initEvent('click', true, true)
+    wrapper
+      .find('button')
+      .getDOMNode()
+      .dispatchEvent(event)
+    wrapper.unmount()
+  })
+
+  it('does not submit the value when not clicked with Redux Form', done => {
+    const expected = {}
+    const onSubmit = values => {
+      expect(values).toEqual(expected)
+      done()
+    }
+    const store = createStore(combineReducers({ form: reducer }))
+    const wrapper = mount(
+      r(
+        Provider,
+        { store },
+        r(
+          reduxForm({ form: 'form', initialValues: {} })(Form as any),
+          { onSubmit },
+          r(Field, { component: SubmitButton, name: 'foo' }),
+        ),
+      ),
+      { attachTo: document.body },
+    )
+    wrapper.childAt(0).simulate('submit')
+    wrapper.unmount()
   })
 })
