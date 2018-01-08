@@ -7,10 +7,10 @@ See the README of each package for more information of how to use the component.
 
 ## Packages
 
-- [React Input Feedback](tree/master/packages/react-input-feedback)
-- [React Labeled](tree/master/packages/react-labeled)
-- [React Sequential ID](tree/master/packages/react-sequential-id)
-- [React Submit](tree/master/packages/react-submit)
+- [React Input Feedback](packages/react-input-feedback)
+- [React Labeled](packages/react-labeled)
+- [React Sequential ID](packages/react-sequential-id)
+- [React Submit](packages/react-submit)
 
 ## Contributing
 
