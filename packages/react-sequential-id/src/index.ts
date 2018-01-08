@@ -14,6 +14,8 @@ export function withIdFactory(factory: () => string): SequentialIdSFC {
   }
 }
 
-const DefaultComponent: SequentialIdSFC = withIdFactory(uniqueid('i'))
+export const defaultIdFactory = uniqueid('i')
+
+const DefaultComponent: SequentialIdSFC = withIdFactory(defaultIdFactory)
 
 export default DefaultComponent
