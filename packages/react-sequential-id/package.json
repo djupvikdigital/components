@@ -17,6 +17,7 @@
   "keywords": [
     "react",
     "react-component",
+    "hoc",
     "id",
     "sequential id",
     "unique id"
