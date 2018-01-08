@@ -27,6 +27,9 @@ npm test
 
 If everything goes smoothly, all the tests should pass.
 
+Code contributions should be formatted with Prettier according to the
+configuration in `.prettierrc`.
+
 ## Legal
 
 Copyright © 2017, 2018 Reidar Djupvik
