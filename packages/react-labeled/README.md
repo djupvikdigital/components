@@ -42,6 +42,24 @@ export default ReactComponent() {
 }
 ```
 
+You can provide a custom label component as an optional second argument, as long
+as it accepts a `htmlFor` prop. Also, you can provide a custom wrapper with
+the `component` prop (the default is `p`):
+
+```jsx
+import labeled from 'react-labeled'
+
+import Input from './my-input'
+import Label from './my-label'
+import Wrapper from './my-wrapper'
+
+const LabeledInput = labeled(Input, Label)
+
+export default ReactComponent() {
+  return <LabeledInput component={Wrapper}>Label</LabeledInput>
+}
+```
+
 ## Legal
 
 Copyright © 2017, 2018 Reidar Djupvik
