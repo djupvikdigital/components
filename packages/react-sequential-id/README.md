@@ -26,6 +26,25 @@ function ReactComponent() {
 }
 ```
 
+The component class exposes the ID factory as a static method `idFactory`. It is
+a good idea to set this between each render on the server side, or else there
+will be a mismatch between client and server ids:
+
+```jsx
+import { renderToString } from 'react-dom/server'
+import SequentialId, { createIdFactory } from 'react-sequential-id'
+
+import App from './components/app'
+
+function handler(req, res) {
+  SequentialId.idFactory = createIdFactory()
+  const html = renderToString(<App />)
+  res.send(
+    '<!DOCTYPE html><title></title><div id="react-root">' + html + '</div>'
+  )
+}
+```
+
 ### withIdFactory
 
 Use this helper if you want to use your own factory function for generating
@@ -38,15 +57,16 @@ import uniqueid from 'uniqueid'
 const SequentialId = withIdFactory(uniqueid('my-prefix'))
 ```
 
-### defaultIdFactory
+### createIdFactory
 
-This is the default ID factory used by the default component. It is a
-sequentially increasing integer prefixed by the letter `i`.
+This function creates an ID factory like the one used by the default component.
+It is a sequentially increasing integer prefixed by the letter `i`.
 
 ```javascript
-import { defaultIdFactory } from 'react-sequential-id'
+import { createIdFactory } from 'react-sequential-id'
 
-const id = defaultIdFactory() // id === 'i0'
+const idFactory = createIdFactory()
+const id = idFactory() // id === 'i0'
 ```
 
 ## Legal
