@@ -27,13 +27,13 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "dependencies": {
-    "@types/react": "^16.0.34",
-    "@types/recompose": "^0.24.4",
+    "@types/react": "^16.0.41",
+    "@types/recompose": "^0.24.7",
     "react": "^16.2.0",
     "react-sequential-id": "^1.0.0",
     "recompose": "^0.26.0"
   },
   "devDependencies": {
-    "typescript": "^2.6.2"
+    "typescript": "^2.7.2"
   }
 }
