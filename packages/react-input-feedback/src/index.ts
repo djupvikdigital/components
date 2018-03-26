@@ -1,13 +1,18 @@
-import { ComponentClass, createElement as r, SFC, SFCElement } from 'react'
+import {
+  Component,
+  ComponentElement,
+  ComponentType,
+  createElement as r,
+  ReactElement,
+  ReactPortal,
+} from 'react'
 import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
 import { WrappedFieldProps } from 'redux-form'
 
-export type Component<P> = string | ComponentClass<P> | SFC<P>
-
 export interface IInputComponents {
-  error?: Component<any>
-  input?: Component<any>
-  wrapper?: Component<any>
+  error?: ComponentType<any>
+  input?: ComponentType<any>
+  wrapper?: ComponentType<any>
 }
 
 export interface IInputProps {
@@ -16,12 +21,20 @@ export interface IInputProps {
 
 export type InputProps = IInputProps & WrappedFieldProps
 
+export {
+  Component,
+  ComponentElement,
+  ISequentialIdProps,
+  ReactElement,
+  ReactPortal,
+}
+
 export default function InputFeedback({
   components: c = {},
   input,
   meta = { error: null, touched: false },
-  ...props,
-}: InputProps): SFCElement<ISequentialIdProps> {
+  ...props
+}: InputProps) {
   const components = {
     error: 'span',
     input: 'input',
