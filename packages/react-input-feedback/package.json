@@ -1,6 +1,6 @@
 {
   "name": "react-input-feedback",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Form field component with feedback",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -28,7 +28,7 @@
   "dependencies": {
     "@types/react": "^16.0.41",
     "react": "^16.2.0",
-    "react-sequential-id": "^1.0.0"
+    "react-sequential-id": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "^2.7.2"
