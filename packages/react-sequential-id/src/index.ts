@@ -1,29 +1,44 @@
-import { Component, ReactElement, ReactPortal } from 'react'
+import {
+  Component,
+  ComponentElement,
+  createContext,
+  createElement as r,
+  Props,
+  ReactElement,
+  ReactPortal,
+  SFCElement,
+} from 'react'
 import uniqueid = require('uniqueid')
+
+export interface IIdProviderProps {
+  factory?: () => string
+}
 
 export interface ISequentialIdProps {
   children?: (id: string) => ReactElement<any> | null
 }
 
-export { ReactPortal }
+export { Component, ComponentElement, ReactPortal, SFCElement }
 
-export function withIdFactory(factory: () => string) {
-  return class SequentialId extends Component<ISequentialIdProps> {
-    public static idFactory = factory
-    public render() {
-      const { children = () => null } = this.props
-      if (typeof children !== 'function') {
-        return null
-      }
-      return children(SequentialId.idFactory())
-    }
+const IdContext = createContext(createIdFactory())
+
+export function IdProvider(props: IIdProviderProps & Props<{}>) {
+  const { children, factory = createIdFactory() } = props
+  return r(IdContext.Provider, { value: factory }, children)
+}
+
+function SequentialId(props: ISequentialIdProps) {
+  const { children = () => null } = props
+  if (typeof children !== 'function') {
+    return null
   }
+  return r(IdContext.Consumer, {}, (factory: () => string) =>
+    children(factory()),
+  )
 }
 
 export function createIdFactory() {
   return uniqueid('i')
 }
 
-const DefaultComponent = withIdFactory(createIdFactory())
-
-export default DefaultComponent
+export default SequentialId

@@ -4,7 +4,7 @@ import { times } from 'ramda'
 import { createElement as r } from 'react'
 import uniqueid = require('uniqueid')
 
-import SequentialId, { createIdFactory, withIdFactory } from './'
+import SequentialId, { IdProvider } from './'
 
 configure({ adapter: new Adapter() })
 
@@ -23,34 +23,33 @@ describe('react-sequential-id', () => {
       expect(children.eq(0).text()).not.toBe(children.eq(1).text())
     })
 
-    test('has idFactory static method', () => {
-      const ids = times(() => {
-        SequentialId.idFactory = createIdFactory()
-        return shallow(r(SequentialId, {}, (id: string) => r('div', {}, id)))
-      }, 2).map(rendered =>
-        rendered
-          .at(0)
-          .childAt(0)
-          .text(),
-      )
+    it('renders the same every time', () => {
+      const ids = times(
+        () =>
+          render(
+            r(
+              IdProvider,
+              {},
+              r(SequentialId, {}, (id: string) => r('div', {}, id)),
+            ),
+          ),
+        2,
+      ).map(rendered => rendered.eq(0).text())
       expect(ids[0]).toBe(ids[1])
     })
   })
 
-  describe('withIdFactory', () => {
-    test(`takes a factory function and returns a component receiving a function
-    child that gets an argument with a generated id`, () => {
+  describe('IdProvider', () => {
+    it('takes a factory prop', () => {
       const factory = uniqueid('test')
-      const Component = withIdFactory(factory)
-      const rendered = shallow(
-        r(Component, { children: (id: string) => r('div', {}, id) }),
+      const rendered = render(
+        r(
+          IdProvider,
+          { factory },
+          r(SequentialId, {}, (id: string) => r('div', {}, id)),
+        ),
       )
-      expect(
-        rendered
-          .at(0)
-          .childAt(0)
-          .text(),
-      ).toBe('test0')
+      expect(rendered.eq(0).text()).toBe('test0')
     })
   })
 })
