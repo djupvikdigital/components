@@ -11,50 +11,49 @@ npm install react-sequential-id
 ## Usage
 
 ```jsx
-import SequentialId from 'react-sequential-id'
+import { IdProvider, SequentialId } from 'react-sequential-id'
 
 function ReactComponent() {
   return (
-    <SequentialId>
-      {(id) => (
-        <p>
-          <label for={id}>Label: <input id={id} name="input" /></label>
-        </p>
-      )}
-    </SequentialId>
+    <IdProvider>
+      <SequentialId>
+        {(id) => (
+          <p>
+            <label for={id}>Label: <input id={id} name="input" /></label>
+          </p>
+        )}
+      </SequentialId>
+    </IdProvider>
   )
 }
 ```
 
-The component class exposes the ID factory as a static method `idFactory`. It is
-a good idea to set this between each render on the server side, or else there
-will be a mismatch between client and server ids:
+### IdProvider
+
+Using an `IdProvider` somewhere near the top of the app hierarchy is highly
+recommended. This ensures that rerenders (like will often happens on the server)
+won't give you different IDs as the sequence is started anew for the children of
+an `IdProvider`. It also takes an optional `factory` prop if you want to use a
+different factory function (for example, using a different prefix):
 
 ```jsx
-import { renderToString } from 'react-dom/server'
-import SequentialId, { createIdFactory } from 'react-sequential-id'
-
-import App from './components/app'
-
-function handler(req, res) {
-  SequentialId.idFactory = createIdFactory()
-  const html = renderToString(<App />)
-  res.send(
-    '<!DOCTYPE html><title></title><div id="react-root">' + html + '</div>'
-  )
-}
-```
-
-### withIdFactory
-
-Use this helper if you want to use your own factory function for generating
-IDs.
-
-```javascript
-import { withIdFactory } from 'react-sequential-id'
 import uniqueid from 'uniqueid'
 
-const SequentialId = withIdFactory(uniqueid('my-prefix'))
+import { IdProvider, SequentialId } from 'react-sequential-id'
+
+function ReactComponent() {
+  return (
+    <IdProvider factory={uniqueid('custom_prefix_')}>
+      <SequentialId>
+        {(id /* === 'custom_prefix_0' */) => (
+          <p>
+            <label for={id}>Label: <input id={id} name="input" /></label>
+          </p>
+        )}
+      </SequentialId>
+    </IdProvider>
+  )
+}
 ```
 
 ### createIdFactory
