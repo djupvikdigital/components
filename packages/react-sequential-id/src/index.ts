@@ -27,7 +27,7 @@ export function IdProvider(props: IIdProviderProps & Props<{}>) {
   return r(IdContext.Provider, { value: factory }, children)
 }
 
-function SequentialId(props: ISequentialIdProps) {
+export function SequentialId(props: ISequentialIdProps) {
   const { children = () => null } = props
   if (typeof children !== 'function') {
     return null
