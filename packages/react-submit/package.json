@@ -27,11 +27,12 @@
     "url": "https://github.com/thirdhand/components/issues"
   },
   "homepage": "https://github.com/thirdhand/components#readme",
-  "dependencies": {
-    "@types/react": "^16.3.14",
-    "react": "^16.3.2"
-  },
   "devDependencies": {
+    "@types/react": "^16.3.14",
+    "react": "^16.3.2",
     "typescript": "^2.8.3"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2"
   }
 }
