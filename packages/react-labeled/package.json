@@ -35,6 +35,6 @@
   },
   "peerDependencies": {
     "react": "^16.3.2",
-    "react-sequential-id": "^2.0.0"
+    "react-sequential-id": "^3.0.0"
   }
 }
