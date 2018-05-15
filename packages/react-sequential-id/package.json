@@ -25,6 +25,7 @@
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
   "devDependencies": {
+    "react": "^16.3.2",
     "typescript": "^2.8.3"
   },
   "dependencies": {
