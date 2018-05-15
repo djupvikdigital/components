@@ -5,6 +5,7 @@ import {
   createElement as r,
   ReactElement,
   ReactPortal,
+  SFCElement,
 } from 'react'
 import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
 import { WrappedFieldProps } from 'redux-form'
@@ -27,6 +28,7 @@ export {
   ISequentialIdProps,
   ReactElement,
   ReactPortal,
+  SFCElement,
 }
 
 export default function InputFeedback({
