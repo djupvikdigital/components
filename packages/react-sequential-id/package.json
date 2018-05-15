@@ -1,6 +1,6 @@
 {
   "name": "react-sequential-id",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "React component for generating sequential IDs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,5 +29,8 @@
   },
   "dependencies": {
     "uniqueid": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2"
   }
 }
