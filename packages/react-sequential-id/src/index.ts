@@ -1,9 +1,11 @@
 import {
   Component,
   ComponentElement,
+  ConsumerProps,
   createContext,
   createElement as r,
   Props,
+  ProviderProps,
   ReactElement,
   ReactPortal,
   SFCElement,
@@ -18,7 +20,14 @@ export interface ISequentialIdProps {
   children?: (id: string) => ReactElement<any> | null
 }
 
-export { Component, ComponentElement, ReactPortal, SFCElement }
+export {
+  Component,
+  ComponentElement,
+  ConsumerProps,
+  ProviderProps,
+  ReactPortal,
+  SFCElement,
+}
 
 const IdContext = createContext(createIdFactory())
 
@@ -32,9 +41,9 @@ export function SequentialId(props: ISequentialIdProps) {
   if (typeof children !== 'function') {
     return null
   }
-  return r(IdContext.Consumer, {}, (factory: () => string) =>
-    children(factory()),
-  )
+  return r(IdContext.Consumer, {
+    children: (factory: () => string) => children(factory()),
+  })
 }
 
 export function createIdFactory() {
