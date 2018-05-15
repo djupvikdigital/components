@@ -1,6 +1,6 @@
 {
   "name": "react-input-feedback",
-  "version": "0.3",
+  "version": "0.3.0",
   "description": "Form field component with feedback",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
