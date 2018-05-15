@@ -8,6 +8,7 @@ import {
   ProviderProps,
   ReactElement,
   ReactPortal,
+  SFC,
   SFCElement,
 } from 'react'
 import uniqueid = require('uniqueid')
@@ -36,7 +37,7 @@ export function IdProvider(props: IIdProviderProps & Props<{}>) {
   return r(IdContext.Provider, { value: factory }, children)
 }
 
-export function SequentialId(props: ISequentialIdProps) {
+export const SequentialId: SFC<ISequentialIdProps> = props => {
   const { children = () => null } = props
   if (typeof children !== 'function') {
     return null
