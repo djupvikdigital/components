@@ -4,13 +4,27 @@ import { times } from 'ramda'
 import { createElement as r } from 'react'
 import uniqueid = require('uniqueid')
 
-import SequentialId, { IdProvider } from './'
+import { IdProvider, SequentialId } from './'
 
 configure({ adapter: new Adapter() })
 
 describe('react-sequential-id', () => {
-  describe('default', () => {
-    test('renders unique ids', () => {
+  describe('IdProvider', () => {
+    it('takes a factory prop', () => {
+      const factory = uniqueid('test')
+      const rendered = render(
+        r(
+          IdProvider,
+          { factory },
+          r(SequentialId, {}, (id: string) => r('div', {}, id)),
+        ),
+      )
+      expect(rendered.eq(0).text()).toBe('test0')
+    })
+  })
+
+  describe('SequentialId', () => {
+    it('renders unique ids', () => {
       const rendered = render(
         r(
           'div',
@@ -36,20 +50,6 @@ describe('react-sequential-id', () => {
         2,
       ).map(rendered => rendered.eq(0).text())
       expect(ids[0]).toBe(ids[1])
-    })
-  })
-
-  describe('IdProvider', () => {
-    it('takes a factory prop', () => {
-      const factory = uniqueid('test')
-      const rendered = render(
-        r(
-          IdProvider,
-          { factory },
-          r(SequentialId, {}, (id: string) => r('div', {}, id)),
-        ),
-      )
-      expect(rendered.eq(0).text()).toBe('test0')
     })
   })
 })
