@@ -1,5 +1,6 @@
 import {
   Component,
+  ComponentClass,
   ComponentElement,
   ConsumerProps,
   createContext,
@@ -10,6 +11,7 @@ import {
   ReactPortal,
   SFC,
   SFCElement,
+  StatelessComponent,
 } from 'react'
 import uniqueid = require('uniqueid')
 
@@ -23,14 +25,18 @@ export interface ISequentialIdProps {
 
 export {
   Component,
+  ComponentClass,
   ComponentElement,
   ConsumerProps,
   ProviderProps,
   ReactPortal,
   SFCElement,
+  StatelessComponent,
 }
 
 const IdContext = createContext(createIdFactory())
+
+export const { Consumer } = IdContext
 
 export function IdProvider(props: IIdProviderProps & Props<{}>) {
   const { children, factory = createIdFactory() } = props

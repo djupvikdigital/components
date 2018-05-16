@@ -4,11 +4,26 @@ import { times } from 'ramda'
 import { createElement as r } from 'react'
 import uniqueid = require('uniqueid')
 
-import { IdProvider, SequentialId } from './'
+import { Consumer, IdProvider, SequentialId } from './'
 
 configure({ adapter: new Adapter() })
 
 describe('react-sequential-id', () => {
+  describe('Consumer', () => {
+    it('exposes the id factory function', () => {
+      const rendered = render(
+        r(
+          IdProvider,
+          { factory: uniqueid('test') },
+          r(Consumer, {
+            children: (factory: () => string) => r('div', {}, factory()),
+          }),
+        ),
+      )
+      expect(rendered.eq(0).text()).toBe('test0')
+    })
+  })
+
   describe('IdProvider', () => {
     it('takes a factory prop', () => {
       const factory = uniqueid('test')
