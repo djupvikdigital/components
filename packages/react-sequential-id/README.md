@@ -56,6 +56,30 @@ function ReactComponent() {
 }
 ```
 
+### Consumer
+
+If you need access to the ID factory currently in use then you can use the
+`Consumer` component.
+
+```jsx
+import { Consumer } from 'react-sequential-id'
+
+function ReactComponent() {
+  return (
+    <Consumer>
+      {(idFactory) => {
+        const id = idFactory()
+        return (
+          <p>
+            <label for={id}>Label: <input id={id} name="input" /></label>
+          </p>
+        )
+      }}
+    </Consumer>
+  )
+}
+```
+
 ### createIdFactory
 
 This function creates an ID factory like the one used by the default component.
