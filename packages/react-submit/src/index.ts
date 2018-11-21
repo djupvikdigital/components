@@ -1,14 +1,13 @@
 import * as React from 'react'
 import { FieldRenderProps } from 'react-final-form'
 
-export interface ISubmitButtonProps {
+export interface ComponentProp {
   component?: string
 }
 
 export type ButtonProps = React.HTMLProps<HTMLButtonElement>
-export type SubmitButtonProps = ButtonProps &
-  FieldRenderProps &
-  ISubmitButtonProps
+export type SubmitButtonProps = ButtonProps & ComponentProp &
+  FieldRenderProps
 
 const r = React.createElement
 
