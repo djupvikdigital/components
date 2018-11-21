@@ -1,7 +1,7 @@
 {
   "name": "react-submit",
-  "version": "0.2.1",
-  "description": "Redux Form compatible submit button",
+  "version": "0.3.0",
+  "description": "React Final Form compatible submit button",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -17,7 +17,7 @@
   "keywords": [
     "react",
     "react-component",
-    "redux-form",
+    "react-final-form",
     "submit",
     "value"
   ],
