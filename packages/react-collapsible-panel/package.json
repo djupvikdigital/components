@@ -1,0 +1,30 @@
+{
+  "name": "react-collapsible-panel",
+  "version": "0.1.0",
+  "description": "A flexible, accessible collapsible panel component",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -f lib/*",
+    "prepublish": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thirdhand/components.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "collapsible",
+    "accessible",
+    "WAI-ARIA"
+  ],
+  "author": "Reidar Djupvik <reidar@djupvik.digital>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thirdhand/components/issues"
+  },
+  "homepage": "https://github.com/thirdhand/components#readme"
+}
