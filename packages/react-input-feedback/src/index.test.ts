@@ -5,32 +5,19 @@ import { createElement as r } from 'react'
 
 import Input from './'
 
+function noop() {
+  return
+}
+
 const createInputProps = mergeDeepRight({
   input: {
     name: 'input',
-    onBlur: null,
-    onChange: null,
-    onDragStart: null,
-    onDrop: null,
-    onFocus: null,
+    onBlur: noop,
+    onChange: noop,
+    onFocus: noop,
     value: '',
   },
-  meta: {
-    asyncValidating: null,
-    autofilled: null,
-    dirty: null,
-    dispatch: null,
-    error: null,
-    form: null,
-    initial: null,
-    invalid: null,
-    pristine: null,
-    submitFailed: null,
-    submitting: null,
-    touched: null,
-    valid: null,
-    visited: null,
-  },
+  meta: {},
 })
 
 configure({ adapter: new Adapter() })

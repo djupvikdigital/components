@@ -7,8 +7,8 @@ import {
   ReactPortal,
   SFCElement,
 } from 'react'
+import { FieldRenderProps } from 'react-final-form'
 import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
-import { WrappedFieldProps } from 'redux-form'
 
 export interface IInputComponents {
   error?: ComponentType<any>
@@ -20,7 +20,7 @@ export interface IInputProps {
   components?: IInputComponents
 }
 
-export type InputProps = IInputProps & WrappedFieldProps
+export type InputProps = IInputProps & FieldRenderProps
 
 export {
   Component,
