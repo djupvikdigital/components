@@ -1,21 +1,21 @@
 import * as React from 'react'
-import { WrappedFieldProps } from 'redux-form'
+import { FieldRenderProps } from 'react-final-form'
 
 export interface ISubmitButtonProps {
-  component: string
+  component?: string
 }
 
 export type ButtonProps = React.HTMLProps<HTMLButtonElement>
 export type SubmitButtonProps = ButtonProps &
-  ISubmitButtonProps &
-  WrappedFieldProps
+  FieldRenderProps &
+  ISubmitButtonProps
 
 const r = React.createElement
 
 export default function SubmitButton({
   children,
   component = 'button',
-  input = { name: '', onChange: null },
+  input,
   meta,
   ...props
 }: SubmitButtonProps) {

@@ -1,51 +1,32 @@
 import { configure, mount, render, shallow } from 'enzyme'
 import Adapter = require('enzyme-adapter-react-16')
-import { identity, mergeDeepRight } from 'ramda'
+import { mergeDeepRight } from 'ramda'
 import { createElement as r } from 'react'
-import { Provider } from 'react-redux'
-import { combineReducers, createStore } from 'redux'
-import { Field, reducer, reduxForm } from 'redux-form'
+import { Field, Form, FormRenderProps } from 'react-final-form'
 
 import SubmitButton from './'
+
+function noop() {
+  return
+}
 
 const createInputProps = mergeDeepRight({
   input: {
     name: 'input',
-    onBlur: null,
-    onChange: null,
-    onDragStart: null,
-    onDrop: null,
-    onFocus: null,
+    onBlur: noop,
+    onChange: noop,
+    onFocus: noop,
     value: '',
   },
-  meta: {
-    asyncValidating: null,
-    autofilled: null,
-    dirty: null,
-    dispatch: null,
-    error: null,
-    form: null,
-    initial: null,
-    invalid: null,
-    pristine: null,
-    submitFailed: null,
-    submitting: null,
-    touched: null,
-    valid: null,
-    visited: null,
-  },
+  meta: {},
 })
-
-function Form({ children, handleSubmit }) {
-  return r('form', { onSubmit: handleSubmit }, children)
-}
 
 configure({ adapter: new Adapter() })
 
 describe('SubmitButton', () => {
   it('renders a submit button', () => {
     const buttonText = 'Button Text'
-    const wrapper = render(r(SubmitButton, {}, buttonText))
+    const wrapper = render(r(SubmitButton, createInputProps({}), buttonText))
     expect(wrapper.is('button')).toBe(true)
     expect(wrapper.attr('type')).toBe('submit')
     expect(wrapper.text()).toBe(buttonText)
@@ -68,20 +49,17 @@ describe('SubmitButton', () => {
     expect(onChange.mock.calls.length).toBe(1)
   })
 
-  it('submits the value when clicked with Redux Form', done => {
+  it('submits the value when clicked with React Final Form', done => {
     const expected = { foo: true }
-    const onSubmit = values => {
+    const onSubmit = (values: {}) => {
       expect(values).toEqual(expected)
       done()
     }
-    const store = createStore(combineReducers({ form: reducer }))
     const wrapper = mount(
-      r(
-        Provider,
-        { store },
+      r(Form, { onSubmit }, ({ handleSubmit }: FormRenderProps) =>
         r(
-          reduxForm({ form: 'form', initialValues: {} })(Form as any),
-          { onSubmit },
+          'form',
+          { onSubmit: handleSubmit },
           r(Field, { component: SubmitButton, name: 'foo' }),
         ),
       ),
@@ -96,20 +74,17 @@ describe('SubmitButton', () => {
     wrapper.unmount()
   })
 
-  it('does not submit the value when not clicked with Redux Form', done => {
+  it('does not submit the value when not clicked with React Final Form', done => {
     const expected = {}
-    const onSubmit = values => {
+    const onSubmit = (values: {}) => {
       expect(values).toEqual(expected)
       done()
     }
-    const store = createStore(combineReducers({ form: reducer }))
     const wrapper = mount(
-      r(
-        Provider,
-        { store },
+      r(Form, { onSubmit }, ({ handleSubmit }: FormRenderProps) =>
         r(
-          reduxForm({ form: 'form', initialValues: {} })(Form as any),
-          { onSubmit },
+          'form',
+          { onSubmit: handleSubmit },
           r(Field, { component: SubmitButton, name: 'foo' }),
         ),
       ),
