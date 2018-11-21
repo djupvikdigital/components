@@ -25,13 +25,13 @@
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
   "devDependencies": {
-    "react": "^16.3.2",
-    "typescript": "^2.8.3"
+    "react": "^16.6.3",
+    "typescript": "^3.1.6"
   },
   "dependencies": {
     "uniqueid": "^1.0.0"
   },
   "peerDependencies": {
-    "react": "^16.3.2"
+    "react": "^16.6.3"
   }
 }

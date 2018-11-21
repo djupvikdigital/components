@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "devDependencies": {
-    "react": "^16.3.2",
-    "react-sequential-id": "^3.0.0",
-    "typescript": "^2.8.3"
+    "react": "^16.6.3",
+    "react-sequential-id": "^3.1.0",
+    "typescript": "^3.1.6"
   },
   "peerDependencies": {
-    "react": "^16.3.2",
-    "react-sequential-id": "^3.0.0"
+    "react": "^16.6.3",
+    "react-sequential-id": "^3.1.0"
   }
 }
