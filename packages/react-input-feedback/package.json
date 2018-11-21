@@ -1,6 +1,6 @@
 {
   "name": "react-input-feedback",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Form field component with feedback",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,8 +16,10 @@
   },
   "keywords": [
     "react",
-    "redux-form",
-    "field"
+    "react-final-form",
+    "field",
+    "input",
+    "error"
   ],
   "author": "Reidar Djupvik <reidar@djupvik.digital>",
   "license": "MIT",
