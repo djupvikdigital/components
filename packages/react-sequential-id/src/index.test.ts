@@ -1,4 +1,4 @@
-import { configure, render, shallow } from 'enzyme'
+import { configure, render } from 'enzyme'
 import Adapter = require('enzyme-adapter-react-16')
 import { times } from 'ramda'
 import { createElement as r } from 'react'
