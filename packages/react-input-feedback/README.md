@@ -1,28 +1,38 @@
 # React Input Feedback
 
-Redux Form compatible form field component that shows a provided error message
+React Final Form compatible form field component that shows a provided error
+message
 
 ## Usage
 
 ```jsx
 import Input from 'react-input-feedback'
-import { Field } from 'redux-form'
+import { Field, Form } from 'react-final-form'
 
 export default FormComponent(props) {
   return (
-    <form>
-      <p><label>Label: <Field component={Input} name="input" /></label></p>
-    </form>
-    )
+    <Form onSubmit={props.submitHandler}>
+      {
+        ({ handleSubmit }) =>
+          (
+            <form onSubmit={handleSubmit}>
+              <p>
+                <label>Label: <Field component={Input} name="input" /></label>
+              </p>
+            </form>
+          )
+      }
+    </Form>
+  )
 }
 ```
 
-With custom components (Redux Forms Field passes the `components` prop to
+With custom components (Redux Final Form's Field passes the `components` prop to
 `Input`):
 
 ```jsx
 import Input from 'react-input-feedback'
-import { Field } from 'redux-form'
+import { Field, Form } from 'react-final-form'
 
 import MyError from './my-error'
 import MyInput from './my-input'
@@ -30,19 +40,30 @@ import MyWrapper from './my-wrapper'
 
 export default FormComponent(props) {
   return (
-    <form>
-      <p>
-        <label>
-          Label:
-          <Field
-            component={Input}
-            components={{ error: MyError, input: MyInput, wrapper: MyWrapper }}
-            name="input"
-          />
-        </label>
-      </p>
-    </form>
-    )
+    <Form onSubmit={props.submitHandler}>
+      {
+        ({ handleSubmit }) =>
+          (
+            <form onSubmit={handleSubmit}>
+              <p>
+                <label>
+                  Label:
+                  <Field
+                    component={Input}
+                    components={{
+                      error: MyError,
+                      input: MyInput,
+                      wrapper: MyWrapper
+                    }}
+                    name="input"
+                  />
+                </label>
+              </p>
+            </form>
+          )
+      }
+    </Form>
+  )
 }
 ```
 
