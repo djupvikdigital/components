@@ -10,17 +10,17 @@ import {
 import { FieldRenderProps } from 'react-final-form'
 import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
 
-export interface IInputComponents {
+export interface InputComponents {
   error?: ComponentType<any>
   input?: ComponentType<any>
   wrapper?: ComponentType<any>
 }
 
-export interface IInputProps {
-  components?: IInputComponents
+export interface ComponentsProp {
+  components?: InputComponents
 }
 
-export type InputProps = IInputProps & FieldRenderProps
+export type InputProps = ComponentsProp & FieldRenderProps
 
 export {
   Component,
