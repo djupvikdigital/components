@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/thirdhand/components/issues"
   },
-  "homepage": "https://github.com/thirdhand/components#readme"
+  "homepage": "https://github.com/thirdhand/components#readme",
+  "devDependencies": {
+    "typescript": "^3.1.6"
+  }
 }
