@@ -4,6 +4,7 @@
   "jsRules": {},
   "rules": {
     "arrow-parens": [true, "ban-single-arg-parens"],
+    "interface-name": false,
     "no-shadowed-variable": [true, { "function": false }],
     "quotemark": [true, "single"],
     "semicolon": [true, "never"],
