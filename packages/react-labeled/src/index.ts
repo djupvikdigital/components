@@ -26,7 +26,7 @@ export default function labeled<P = {}>(
     component = 'p',
     hidden,
     label,
-    ...props,
+    ...props
   }: any) =>
     r(SequentialId, {}, (id: string) =>
       r(
