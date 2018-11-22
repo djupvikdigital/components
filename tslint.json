@@ -6,6 +6,7 @@
     "arrow-parens": [true, "ban-single-arg-parens"],
     "interface-name": false,
     "no-shadowed-variable": [true, { "function": false }],
+    "object-literal-key-quotes": [true, "as-needed"],
     "quotemark": [true, "single"],
     "semicolon": [true, "never"],
     "trailing-comma": [true, { "typeLiterals": "ignore" }]
