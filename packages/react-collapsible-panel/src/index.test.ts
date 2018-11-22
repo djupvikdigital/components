@@ -51,3 +51,16 @@ describe('Button', () => {
     ).toBe('false')
   })
 })
+
+describe('Panel', () => {
+  it('does nothing when controlled with the expanded prop', () => {
+    const wrapper = mount(r(Panel, { expanded: false }, r(Button)))
+    wrapper.simulate('click')
+    expect(
+      wrapper
+        .childAt(0)
+        .getDOMNode()
+        .getAttribute('aria-expanded'),
+    ).toBe('false')
+  })
+})

@@ -3,7 +3,8 @@ import { Component, createElement as r } from 'react'
 import { Context } from './context'
 
 export interface PanelProps {
-  initialExpanded: boolean
+  expanded?: boolean
+  initialExpanded?: boolean
 }
 
 export interface PanelState {
@@ -14,7 +15,7 @@ class Panel extends Component<PanelProps, PanelState> {
   constructor(props: PanelProps) {
     super(props)
     this.state = {
-      expanded: props.initialExpanded,
+      expanded: !!props.initialExpanded,
     }
   }
   public toggle() {
@@ -22,14 +23,16 @@ class Panel extends Component<PanelProps, PanelState> {
     this.setState({ expanded })
   }
   public render() {
-    const { children } = this.props
-    const { expanded } = this.state
+    const { props, state } = this
+    const { children } = props
+    const isControlled = typeof props.expanded !== 'undefined'
+    const expanded = Boolean(isControlled ? props.expanded : state.expanded)
     return r(
       Context.Provider,
       {
         value: {
           expanded,
-          toggle: () => this.toggle(),
+          toggle: isControlled ? () => undefined : () => this.toggle(),
         },
       },
       children,
