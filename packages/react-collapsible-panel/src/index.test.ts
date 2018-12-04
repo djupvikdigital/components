@@ -2,9 +2,28 @@ import { configure, mount, render } from 'enzyme'
 import * as Adapter from 'enzyme-adapter-react-16'
 import { createElement as r } from 'react'
 
-import { Body, Button, Panel } from './index'
+import { Accordion, AccordionPanel, Body, Button, Panel } from './index'
 
 configure({ adapter: new Adapter() })
+
+describe('Accordion', () => {
+  it('sets one Panel child as expanded', () => {
+    const wrapper = render(
+      r(
+        'div',
+        {},
+        r(
+          Accordion,
+          {},
+          r(AccordionPanel, {}, r(Button)),
+          r(AccordionPanel, {}, r(Button)),
+        ),
+      ),
+    )
+    expect(wrapper.children().eq(0).attr('aria-expanded')).toBe('true')
+    expect(wrapper.children().eq(1).attr('aria-expanded')).toBe('false')
+  })
+})
 
 describe('Body', () => {
   it('has the hidden attribute set when not expanded', () => {
