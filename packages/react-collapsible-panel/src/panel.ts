@@ -5,6 +5,7 @@ import { Context } from './context'
 export interface PanelProps {
   expanded?: boolean
   initialExpanded?: boolean
+  onToggle?: (expanded: boolean) => void
 }
 
 export interface PanelState {
@@ -18,9 +19,21 @@ class Panel extends Component<PanelProps, PanelState> {
       expanded: !!props.initialExpanded,
     }
   }
-  public toggle() {
-    const expanded = !this.state.expanded
-    this.setState({ expanded })
+  public toggle = () => {
+    const { props, state } = this
+    const { onToggle } = props
+    const isControlled = typeof props.expanded !== 'undefined'
+    if (isControlled) {
+      if (typeof onToggle === 'function') {
+        onToggle(!!props.expanded)
+      }
+    } else {
+      const expanded = !state.expanded
+      this.setState(
+        { expanded },
+        () => typeof onToggle === 'function' && onToggle(expanded),
+      )
+    }
   }
   public render() {
     const { props, state } = this
@@ -32,7 +45,7 @@ class Panel extends Component<PanelProps, PanelState> {
       {
         value: {
           expanded,
-          toggle: isControlled ? () => undefined : () => this.toggle(),
+          toggle: this.toggle,
         },
       },
       children,

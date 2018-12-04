@@ -63,4 +63,18 @@ describe('Panel', () => {
         .getAttribute('aria-expanded'),
     ).toBe('false')
   })
+
+  it('takes an onToggle callback prop', () => {
+    const onToggle = jest.fn()
+    const wrapper = mount(r(Panel, { onToggle }, r(Button)))
+    wrapper.simulate('click')
+    expect(onToggle.mock.calls.length).toBe(1)
+  })
+
+  it('calls onToggle when controlled', () => {
+    const onToggle = jest.fn()
+    const wrapper = mount(r(Panel, { expanded: false, onToggle }, r(Button)))
+    wrapper.simulate('click')
+    expect(onToggle.mock.calls.length).toBe(1)
+  })
 })
