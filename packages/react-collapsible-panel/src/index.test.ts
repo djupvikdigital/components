@@ -20,8 +20,43 @@ describe('Accordion', () => {
         ),
       ),
     )
-    expect(wrapper.children().eq(0).attr('aria-expanded')).toBe('true')
-    expect(wrapper.children().eq(1).attr('aria-expanded')).toBe('false')
+    expect(
+      wrapper
+        .children()
+        .eq(0)
+        .attr('aria-expanded'),
+    ).toBe('true')
+    expect(
+      wrapper
+        .children()
+        .eq(1)
+        .attr('aria-expanded'),
+    ).toBe('false')
+  })
+
+  it('closes one Panel when the other is expanded', () => {
+    const wrapper = mount(
+      r(
+        'div',
+        {},
+        r(
+          Accordion,
+          {},
+          r(AccordionPanel, {}, r(Button)),
+          r(AccordionPanel, {}, r(Button)),
+        ),
+      ),
+    )
+    const div = wrapper.childAt(0)
+    const second = div.childAt(1)
+    second.simulate('click')
+    expect(
+      div
+        .childAt(0)
+        .getDOMNode()
+        .getAttribute('aria-expanded'),
+    ).toBe('false')
+    expect(second.getDOMNode().getAttribute('aria-expanded')).toBe('true')
   })
 })
 

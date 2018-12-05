@@ -13,11 +13,13 @@ interface AccordionState {
 
 interface AccordionContextValue extends AccordionState {
   counterFactory: () => number
+  toggle: (expandedIndex: number) => void
 }
 
 export const AccordionContext = createContext<AccordionContextValue>({
   counterFactory: createCounterFactory(),
   expandedIndex: 0,
+  toggle: () => undefined,
 })
 
 const AccordionPanel: FunctionComponent = function AccordionPanel({
@@ -26,8 +28,17 @@ const AccordionPanel: FunctionComponent = function AccordionPanel({
   return r(
     AccordionContext.Consumer as any,
     {},
-    ({ counterFactory, expandedIndex }: AccordionContextValue) =>
-      r(Panel, { expanded: counterFactory() === expandedIndex }, children),
+    ({ counterFactory, expandedIndex, toggle }: AccordionContextValue) => {
+      const index = counterFactory()
+      return r(
+        Panel,
+        {
+          expanded: index === expandedIndex,
+          onToggle: (expanded: boolean) => toggle(expanded ? 0 : index),
+        },
+        children,
+      )
+    },
   )
 }
 
@@ -35,12 +46,21 @@ class Accordion extends Component<{}, AccordionState> {
   public state = {
     expandedIndex: 0,
   }
+  public toggle = (expandedIndex: number) => {
+    return this.setState({ expandedIndex })
+  }
   public render() {
     const { children } = this.props
     const { expandedIndex } = this.state
     return r(
       AccordionContext.Provider,
-      { value: { counterFactory: createCounterFactory(), expandedIndex } },
+      {
+        value: {
+          counterFactory: createCounterFactory(),
+          expandedIndex,
+          toggle: this.toggle,
+        },
+      },
       children,
     )
   }
