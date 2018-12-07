@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-export interface ContextValue {
+export interface CollapsibleContextValue {
   expanded: boolean
   toggle: () => void
 }
@@ -9,7 +9,7 @@ function noop() {
   return
 }
 
-export const Context = createContext<ContextValue>({
+export const CollapsibleContext = createContext<CollapsibleContextValue>({
   expanded: false,
   toggle: noop,
 })

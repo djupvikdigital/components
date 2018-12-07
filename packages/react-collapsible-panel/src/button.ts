@@ -1,7 +1,10 @@
 import { compose } from 'ramda'
 import { ButtonHTMLAttributes, createElement as r, ReactNode, SFC } from 'react'
 
-import { Context, ContextValue } from './context'
+import {
+  CollapsibleContext,
+  CollapsibleContextValue,
+} from './collapsible-context'
 
 type RenderCallback = (expanded: boolean) => ReactNode
 
@@ -18,9 +21,9 @@ const Button: SFC<ButtonProps> = function Button({
   ...props
 }) {
   return r(
-    Context.Consumer as any,
+    CollapsibleContext.Consumer as any,
     null,
-    ({ expanded, toggle }: ContextValue) =>
+    ({ expanded, toggle }: CollapsibleContextValue) =>
       r(
         'button',
         {

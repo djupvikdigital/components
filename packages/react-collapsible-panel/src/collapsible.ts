@@ -1,6 +1,6 @@
 import { Component, createElement as r } from 'react'
 
-import { Context } from './context'
+import { CollapsibleContext } from './collapsible-context'
 
 export interface CollapsibleProps {
   expanded?: boolean
@@ -41,7 +41,7 @@ class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
     const isControlled = typeof props.expanded !== 'undefined'
     const expanded = Boolean(isControlled ? props.expanded : state.expanded)
     return r(
-      Context.Provider,
+      CollapsibleContext.Provider,
       {
         value: {
           expanded,
