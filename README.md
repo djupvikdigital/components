@@ -7,6 +7,7 @@ See the README of each package for more information of how to use the component.
 
 ## Packages
 
+- [Garmon](packages/garmon) – accordions and collapsible sections
 - [React Input Feedback](packages/react-input-feedback)
 - [React Labeled](packages/react-labeled)
 - [React Sequential ID](packages/react-sequential-id)
