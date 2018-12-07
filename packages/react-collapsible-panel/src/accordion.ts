@@ -3,13 +3,13 @@ import { Component, createElement as r } from 'react'
 import { AccordionContext } from './accordion-context'
 import { createNumberFactory } from './create-number-factory'
 
-interface AccordionProps {
+export interface AccordionProps {
   expandedIndex?: number
   initialExpandedIndex?: number
   onToggle?: (expandedIndex: number) => void
 }
 
-interface AccordionState {
+export interface AccordionState {
   expandedIndex: number
 }
 

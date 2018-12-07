@@ -1,4 +1,4 @@
-import { Accordion } from './accordion'
+import { Accordion, AccordionProps, AccordionState } from './accordion'
 import { AccordionItem } from './accordion-item'
 import { Body, BodyProps } from './body'
 import { Button, ButtonProps } from './button'
@@ -11,6 +11,8 @@ import {
 export {
   Accordion,
   AccordionItem,
+  AccordionProps,
+  AccordionState,
   Body,
   BodyProps,
   Button,
