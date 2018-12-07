@@ -2,7 +2,7 @@ import { configure, mount, render } from 'enzyme'
 import * as Adapter from 'enzyme-adapter-react-16'
 import { createElement as r } from 'react'
 
-import { Accordion, AccordionPanel, Body, Button, Collapsible } from './index'
+import { Accordion, AccordionItem, Body, Button, Collapsible } from './index'
 
 configure({ adapter: new Adapter() })
 
@@ -15,8 +15,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           {},
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )
@@ -42,8 +42,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           { initialExpandedIndex: 0 },
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )
@@ -67,8 +67,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           { initialExpandedIndex: 0 },
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )
@@ -92,8 +92,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           { initialExpandedIndex: 1 },
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )
@@ -119,8 +119,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           { expandedIndex: 0 },
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )
@@ -145,8 +145,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           { expandedIndex: 0, onToggle },
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )
@@ -166,8 +166,8 @@ describe('Accordion', () => {
         r(
           Accordion,
           { onToggle },
-          r(AccordionPanel, {}, r(Button)),
-          r(AccordionPanel, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
+          r(AccordionItem, {}, r(Button)),
         ),
       ),
     )

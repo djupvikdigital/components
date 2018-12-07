@@ -1,4 +1,4 @@
-import { Accordion, AccordionPanel } from './accordion'
+import { Accordion, AccordionItem } from './accordion'
 import { Body, BodyProps } from './body'
 import { Button, ButtonProps } from './button'
 import { Collapsible, CollapsibleProps, CollapsibleState } from './collapsible'
@@ -9,7 +9,7 @@ import {
 
 export {
   Accordion,
-  AccordionPanel,
+  AccordionItem,
   Body,
   BodyProps,
   Button,

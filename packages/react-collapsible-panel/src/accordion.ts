@@ -28,9 +28,7 @@ export const AccordionContext = createContext<AccordionContextValue>({
   toggle: () => undefined,
 })
 
-const AccordionPanel: FunctionComponent = function AccordionPanel({
-  children,
-}) {
+const AccordionItem: FunctionComponent = function AccordionItem({ children }) {
   return r(
     AccordionContext.Consumer as any,
     {},
@@ -100,4 +98,4 @@ function createCounterFactory(start = 0) {
   }
 }
 
-export { Accordion, AccordionPanel }
+export { Accordion, AccordionItem }
