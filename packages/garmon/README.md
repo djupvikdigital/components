@@ -111,6 +111,10 @@ Again, neither `Accordion` nor `AccordionItem` insert any HTML markup.
   (in case of an uncontrolled component), or the index that the `Accordion`
   would like to show, were you not such a control freak
 
+## Examples
+
+[Some more examples on CodeSandbox](https://codesandbox.io/s/10kny0qm3q)
+
 ## Legal
 
 Copyright © 2018 Reidar Djupvik
