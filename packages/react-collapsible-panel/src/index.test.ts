@@ -58,6 +58,33 @@ describe('Accordion', () => {
     ).toBe('false')
     expect(second.getDOMNode().getAttribute('aria-expanded')).toBe('true')
   })
+
+  it('takes an initialExpandedIndex prop', () => {
+    const wrapper = render(
+      r(
+        'div',
+        {},
+        r(
+          Accordion,
+          { initialExpandedIndex: 1 },
+          r(AccordionPanel, {}, r(Button)),
+          r(AccordionPanel, {}, r(Button)),
+        ),
+      ),
+    )
+    expect(
+      wrapper
+        .children()
+        .eq(0)
+        .attr('aria-expanded'),
+    ).toBe('false')
+    expect(
+      wrapper
+        .children()
+        .eq(1)
+        .attr('aria-expanded'),
+    ).toBe('true')
+  })
 })
 
 describe('Body', () => {

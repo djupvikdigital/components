@@ -7,6 +7,10 @@ import {
 
 import { Panel } from './panel'
 
+interface AccordionProps {
+  initialExpandedIndex?: number
+}
+
 interface AccordionState {
   expandedIndex: number
 }
@@ -42,9 +46,11 @@ const AccordionPanel: FunctionComponent = function AccordionPanel({
   )
 }
 
-class Accordion extends Component<{}, AccordionState> {
-  public state = {
-    expandedIndex: 0,
+class Accordion extends Component<AccordionProps, AccordionState> {
+  constructor(props: AccordionProps) {
+    super(props)
+    const { initialExpandedIndex } = props
+    this.state = { expandedIndex: initialExpandedIndex || 0 }
   }
   public toggle = (expandedIndex: number) => {
     return this.setState({ expandedIndex })
