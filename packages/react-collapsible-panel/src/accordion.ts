@@ -40,7 +40,7 @@ const AccordionPanel: FunctionComponent = function AccordionPanel({
         Panel,
         {
           expanded: index === expandedIndex,
-          onToggle: (expanded: boolean) => toggle(expanded ? 0 : index),
+          onToggle: (expanded: boolean) => toggle(expanded ? -1 : index),
         },
         children,
       )
@@ -52,10 +52,13 @@ class Accordion extends Component<AccordionProps, AccordionState> {
   constructor(props: AccordionProps) {
     super(props)
     const { initialExpandedIndex } = props
-    this.state = { expandedIndex: initialExpandedIndex || 0 }
+    this.state = {
+      expandedIndex:
+        typeof initialExpandedIndex !== 'undefined' ? initialExpandedIndex : -1,
+    }
   }
   public toggle = (expandedIndex: number) => {
-    const { props, state } = this
+    const { props } = this
     const { onToggle } = props
     const isControlled = typeof props.expandedIndex !== 'undefined'
     if (isControlled) {
@@ -64,17 +67,18 @@ class Accordion extends Component<AccordionProps, AccordionState> {
       }
     } else {
       return this.setState(
-        {
-          expandedIndex:
-            state.expandedIndex === expandedIndex ? -1 : expandedIndex,
-        },
+        { expandedIndex },
         () => typeof onToggle === 'function' && onToggle(expandedIndex),
       )
     }
   }
   public render() {
-    const { children } = this.props
-    const { expandedIndex } = this.state
+    const { props, state } = this
+    const { children } = props
+    const isControlled = typeof props.expandedIndex !== 'undefined'
+    const expandedIndex = Number(
+      isControlled ? props.expandedIndex : state.expandedIndex,
+    )
     return r(
       AccordionContext.Provider,
       {

@@ -7,7 +7,7 @@ import { Accordion, AccordionPanel, Body, Button, Panel } from './index'
 configure({ adapter: new Adapter() })
 
 describe('Accordion', () => {
-  it('sets one Panel child as expanded', () => {
+  it('defaults to no panels being expanded', () => {
     const wrapper = render(
       r(
         'div',
@@ -25,7 +25,7 @@ describe('Accordion', () => {
         .children()
         .eq(0)
         .attr('aria-expanded'),
-    ).toBe('true')
+    ).toBe('false')
     expect(
       wrapper
         .children()
@@ -41,7 +41,7 @@ describe('Accordion', () => {
         {},
         r(
           Accordion,
-          {},
+          { initialExpandedIndex: 0 },
           r(AccordionPanel, {}, r(Button)),
           r(AccordionPanel, {}, r(Button)),
         ),
@@ -66,7 +66,7 @@ describe('Accordion', () => {
         {},
         r(
           Accordion,
-          {},
+          { initialExpandedIndex: 0 },
           r(AccordionPanel, {}, r(Button)),
           r(AccordionPanel, {}, r(Button)),
         ),
