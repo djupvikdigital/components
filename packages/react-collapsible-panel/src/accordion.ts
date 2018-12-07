@@ -1,11 +1,7 @@
-import {
-  Component,
-  createContext,
-  createElement as r,
-  FunctionComponent,
-} from 'react'
+import { Component, createElement as r } from 'react'
 
-import { Collapsible } from './collapsible'
+import { AccordionContext } from './accordion-context'
+import { createNumberFactory } from './create-number-factory'
 
 interface AccordionProps {
   expandedIndex?: number
@@ -15,35 +11,6 @@ interface AccordionProps {
 
 interface AccordionState {
   expandedIndex: number
-}
-
-interface AccordionContextValue extends AccordionState {
-  counterFactory: () => number
-  toggle: (expandedIndex: number) => void
-}
-
-export const AccordionContext = createContext<AccordionContextValue>({
-  counterFactory: createCounterFactory(),
-  expandedIndex: 0,
-  toggle: () => undefined,
-})
-
-const AccordionItem: FunctionComponent = function AccordionItem({ children }) {
-  return r(
-    AccordionContext.Consumer as any,
-    {},
-    ({ counterFactory, expandedIndex, toggle }: AccordionContextValue) => {
-      const index = counterFactory()
-      return r(
-        Collapsible,
-        {
-          expanded: index === expandedIndex,
-          onToggle: (expanded: boolean) => toggle(expanded ? -1 : index),
-        },
-        children,
-      )
-    },
-  )
 }
 
 class Accordion extends Component<AccordionProps, AccordionState> {
@@ -81,8 +48,8 @@ class Accordion extends Component<AccordionProps, AccordionState> {
       AccordionContext.Provider,
       {
         value: {
-          counterFactory: createCounterFactory(),
           expandedIndex,
+          numberFactory: createNumberFactory(),
           toggle: this.toggle,
         },
       },
@@ -91,11 +58,4 @@ class Accordion extends Component<AccordionProps, AccordionState> {
   }
 }
 
-function createCounterFactory(start = 0) {
-  let counter = start
-  return function counterFactory() {
-    return counter++
-  }
-}
-
-export { Accordion, AccordionItem }
+export { Accordion }
