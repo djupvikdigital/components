@@ -49,14 +49,20 @@ convenience for extra flexibility.
   In case of a controlled component, you will have to toggle the `expanded` prop
   yourself.
 
-#### Button
+### Button
 
 `Button` creates a normal HTML `button` element, with no styling. Here it is
 wrapped inside a heading element, but it will still look like a button. You can
 style it however you want – be it with a CSS-in-JS library, CSS modules, a
 hand-written `className` prop, or even (gasp) inline styles.
 
-#### Body
+#### Button props
+
++ `render` (or providing a function child): `(expanded: boolean) => ReactNode` –
+  use this if you need to render different content inside the button when
+  expanded (like icons for open or closed state)
+
+### Body
 
 `Body` inserts a `div` element, but you can even get rid of that by using
 `CollapsibleContext.Consumer` to create your own custom body component, should
