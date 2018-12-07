@@ -1,10 +1,8 @@
 import { Accordion, AccordionPanel } from './accordion'
 import { Body, BodyProps } from './body'
 import { Button, ButtonProps } from './button'
+import { Collapsible, CollapsibleProps, CollapsibleState } from './collapsible'
 import { Context, ContextValue } from './context'
-import { Panel, PanelProps, PanelState } from './panel'
-
-export const Collapsible = { Body, Button, Context, Panel }
 
 export {
   Accordion,
@@ -15,7 +13,7 @@ export {
   ButtonProps,
   Context,
   ContextValue,
-  Panel,
-  PanelProps,
-  PanelState,
+  Collapsible,
+  CollapsibleProps,
+  CollapsibleState,
 }

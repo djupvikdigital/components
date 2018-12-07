@@ -5,7 +5,7 @@ import {
   FunctionComponent,
 } from 'react'
 
-import { Panel } from './panel'
+import { Collapsible } from './collapsible'
 
 interface AccordionProps {
   expandedIndex?: number
@@ -37,7 +37,7 @@ const AccordionPanel: FunctionComponent = function AccordionPanel({
     ({ counterFactory, expandedIndex, toggle }: AccordionContextValue) => {
       const index = counterFactory()
       return r(
-        Panel,
+        Collapsible,
         {
           expanded: index === expandedIndex,
           onToggle: (expanded: boolean) => toggle(expanded ? -1 : index),

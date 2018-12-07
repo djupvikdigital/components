@@ -2,18 +2,18 @@ import { Component, createElement as r } from 'react'
 
 import { Context } from './context'
 
-export interface PanelProps {
+export interface CollapsibleProps {
   expanded?: boolean
   initialExpanded?: boolean
   onToggle?: (expanded: boolean) => void
 }
 
-export interface PanelState {
+export interface CollapsibleState {
   expanded: boolean
 }
 
-class Panel extends Component<PanelProps, PanelState> {
-  constructor(props: PanelProps) {
+class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
+  constructor(props: CollapsibleProps) {
     super(props)
     this.state = {
       expanded: !!props.initialExpanded,
@@ -53,4 +53,4 @@ class Panel extends Component<PanelProps, PanelState> {
   }
 }
 
-export { Panel }
+export { Collapsible }
