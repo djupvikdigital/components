@@ -1,5 +1,10 @@
-import { compose } from 'ramda'
-import { ButtonHTMLAttributes, createElement as r, ReactNode, SFC } from 'react'
+import {
+  ButtonHTMLAttributes,
+  createElement as r,
+  MouseEvent,
+  ReactNode,
+  SFC,
+} from 'react'
 
 import {
   CollapsibleContext,
@@ -29,10 +34,10 @@ const Button: SFC<ButtonProps> = function Button({
         {
           'aria-expanded': expanded,
           onClick: onClick
-            ? compose(
-                toggle,
-                onClick,
-              )
+            ? (event: MouseEvent<HTMLButtonElement>) => {
+                onClick(event)
+                toggle()
+              }
             : toggle,
           type: 'button',
           ...props,
