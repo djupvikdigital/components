@@ -1,9 +1,9 @@
 import {
   ButtonHTMLAttributes,
   createElement as r,
+  FunctionComponent,
   MouseEvent,
   ReactNode,
-  SFC,
 } from 'react'
 
 import {
@@ -18,7 +18,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   render?: RenderCallback
 }
 
-const Button: SFC<ButtonProps> = function Button({
+const Button: FunctionComponent<ButtonProps> = function Button({
   children,
   onClick,
   onKeyDown,
