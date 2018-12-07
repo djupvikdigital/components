@@ -1,7 +1,7 @@
 {
-  "name": "react-collapsible-panel",
+  "name": "garmon",
   "version": "0.1.0",
-  "description": "A flexible, accessible collapsible panel component",
+  "description": "A flexible, accessible accordion, and collapsible component",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
