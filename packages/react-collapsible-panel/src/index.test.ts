@@ -59,6 +59,31 @@ describe('Accordion', () => {
     expect(second.getDOMNode().getAttribute('aria-expanded')).toBe('true')
   })
 
+  it('allows the open panel to be collapsed, leaving none expanded', () => {
+    const wrapper = mount(
+      r(
+        'div',
+        {},
+        r(
+          Accordion,
+          {},
+          r(AccordionPanel, {}, r(Button)),
+          r(AccordionPanel, {}, r(Button)),
+        ),
+      ),
+    )
+    const div = wrapper.childAt(0)
+    const first = div.childAt(0)
+    first.simulate('click')
+    expect(first.getDOMNode().getAttribute('aria-expanded')).toBe('false')
+    expect(
+      div
+        .childAt(1)
+        .getDOMNode()
+        .getAttribute('aria-expanded'),
+    ).toBe('false')
+  })
+
   it('takes an initialExpandedIndex prop', () => {
     const wrapper = render(
       r(

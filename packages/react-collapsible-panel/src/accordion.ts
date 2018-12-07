@@ -55,7 +55,7 @@ class Accordion extends Component<AccordionProps, AccordionState> {
     this.state = { expandedIndex: initialExpandedIndex || 0 }
   }
   public toggle = (expandedIndex: number) => {
-    const { props } = this
+    const { props, state } = this
     const { onToggle } = props
     const isControlled = typeof props.expandedIndex !== 'undefined'
     if (isControlled) {
@@ -64,7 +64,10 @@ class Accordion extends Component<AccordionProps, AccordionState> {
       }
     } else {
       return this.setState(
-        { expandedIndex },
+        {
+          expandedIndex:
+            state.expandedIndex === expandedIndex ? -1 : expandedIndex,
+        },
         () => typeof onToggle === 'function' && onToggle(expandedIndex),
       )
     }
