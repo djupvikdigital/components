@@ -10,6 +10,7 @@ import { Panel } from './panel'
 interface AccordionProps {
   expandedIndex?: number
   initialExpandedIndex?: number
+  onToggle?: (expandedIndex: number) => void
 }
 
 interface AccordionState {
@@ -55,9 +56,17 @@ class Accordion extends Component<AccordionProps, AccordionState> {
   }
   public toggle = (expandedIndex: number) => {
     const { props } = this
+    const { onToggle } = props
     const isControlled = typeof props.expandedIndex !== 'undefined'
-    if (!isControlled) {
-      return this.setState({ expandedIndex })
+    if (isControlled) {
+      if (typeof onToggle === 'function') {
+        onToggle(expandedIndex)
+      }
+    } else {
+      return this.setState(
+        { expandedIndex },
+        () => typeof onToggle === 'function' && onToggle(expandedIndex),
+      )
     }
   }
   public render() {

@@ -110,6 +110,48 @@ describe('Accordion', () => {
     ).toBe('true')
     expect(second.getDOMNode().getAttribute('aria-expanded')).toBe('false')
   })
+
+  it('takes an onToggle callback prop', () => {
+    const onToggle = jest.fn()
+    const wrapper = mount(
+      r(
+        'div',
+        {},
+        r(
+          Accordion,
+          { expandedIndex: 0, onToggle },
+          r(AccordionPanel, {}, r(Button)),
+          r(AccordionPanel, {}, r(Button)),
+        ),
+      ),
+    )
+    const div = wrapper.childAt(0)
+    const second = div.childAt(1)
+    second.simulate('click')
+    expect(onToggle.mock.calls.length).toBe(1)
+    expect(onToggle.mock.calls[0][0]).toBe(1)
+  })
+
+  it('calls onToggle when controlled', () => {
+    const onToggle = jest.fn()
+    const wrapper = mount(
+      r(
+        'div',
+        {},
+        r(
+          Accordion,
+          { onToggle },
+          r(AccordionPanel, {}, r(Button)),
+          r(AccordionPanel, {}, r(Button)),
+        ),
+      ),
+    )
+    const div = wrapper.childAt(0)
+    const second = div.childAt(1)
+    second.simulate('click')
+    expect(onToggle.mock.calls.length).toBe(1)
+    expect(onToggle.mock.calls[0][0]).toBe(1)
+  })
 })
 
 describe('Body', () => {
