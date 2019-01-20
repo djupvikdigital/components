@@ -1,16 +1,6 @@
-import {
-  Component,
-  ComponentElement,
-  createElement as r,
-  FC,
-  Fragment,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-  SFCElement,
-} from 'react'
+import { createElement as r, FC, Fragment, ReactNode } from 'react'
 import { FieldRenderProps } from 'react-final-form'
-import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
+import SequentialId from 'react-sequential-id'
 
 export interface ErrorProps {
   id: string
@@ -37,15 +27,6 @@ export type RenderCallback = (stateAndHelpers: StateAndHelpers) => ReactNode
 export interface InputFeedbackProps extends FieldRenderProps {
   children?: RenderCallback
   render?: RenderCallback
-}
-
-export {
-  Component,
-  ComponentElement,
-  ISequentialIdProps,
-  ReactElement,
-  ReactPortal,
-  SFCElement,
 }
 
 function getErrorProps(errorId: string) {
