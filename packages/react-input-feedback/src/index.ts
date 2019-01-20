@@ -42,7 +42,7 @@ function getInputProps(showError: boolean, errorId: string, props: object) {
   })
 }
 
-const InputFeedback: FC<InputFeedbackProps> = function InputFeedback({
+export const InputFeedback: FC<InputFeedbackProps> = function InputFeedback({
   children,
   input,
   meta = { error: null, touched: false },
@@ -72,5 +72,3 @@ const InputFeedback: FC<InputFeedbackProps> = function InputFeedback({
     )
   })
 }
-
-export default InputFeedback

@@ -3,7 +3,7 @@ import Adapter = require('enzyme-adapter-react-16')
 import { mergeDeepRight } from 'ramda'
 import { createElement as r, Fragment } from 'react'
 
-import Input, { StateAndHelpers } from './'
+import { InputFeedback, StateAndHelpers } from './'
 
 function noop() {
   return
@@ -41,7 +41,10 @@ describe('Input', () => {
       r(
         'div',
         {},
-        r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+        r(
+          InputFeedback,
+          createInputProps({ meta: { error: 'error', touched: true } }),
+        ),
       ),
     )
     expect(
@@ -57,7 +60,10 @@ describe('Input', () => {
       r(
         'div',
         {},
-        r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+        r(
+          InputFeedback,
+          createInputProps({ meta: { error: 'error', touched: true } }),
+        ),
       ),
     )
     expect(
@@ -70,7 +76,11 @@ describe('Input', () => {
 
   test('sets aria-invalid to false when not provided an error', () => {
     const wrapper = render(
-      r('div', {}, r(Input, createInputProps({ meta: { touched: true } }))),
+      r(
+        'div',
+        {},
+        r(InputFeedback, createInputProps({ meta: { touched: true } })),
+      ),
     )
     expect(
       wrapper
@@ -86,7 +96,7 @@ describe('Input', () => {
         'div',
         {},
         r(
-          Input,
+          InputFeedback,
           createInputProps({ meta: { error: 'error', touched: false } }),
         ),
       ),
@@ -104,7 +114,10 @@ describe('Input', () => {
       r(
         'div',
         {},
-        r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+        r(
+          InputFeedback,
+          createInputProps({ meta: { error: 'error', touched: true } }),
+        ),
       ),
     )
     const describedby = wrapper
@@ -127,7 +140,7 @@ describe('Input', () => {
         'div',
         {},
         r(
-          Input,
+          InputFeedback,
           createInputProps({
             className,
             meta: { error: 'error', touched: true },
