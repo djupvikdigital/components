@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react'
-import { createElement as r } from 'react'
+import { createElement as r, Fragment } from 'react'
 import { Client } from 'styletron-engine-atomic'
 import { Provider, styled } from 'styletron-react'
 
@@ -31,18 +31,25 @@ storiesOf('InputFeedback', module)
     r(
       Provider,
       { value: styletron },
-      r(Input, { components: { input: StyledInput } }),
+      r(Input, {}, ({ getInputProps }) => r(StyledInput, getInputProps())),
     ),
   )
   .add('styled with error', () =>
     r(
       Provider,
       { value: styletron },
-      r(Input, {
-        components: {
-          input: StyledInput,
+      r(
+        Input,
+        {
+          meta: { error: 'Error text', touched: true },
         },
-        meta: { error: 'Error text', touched: true },
-      }),
+        ({ error, getErrorProps, getInputProps }) =>
+          r(
+            Fragment,
+            {},
+            r(StyledInput, getInputProps()),
+            r('span', getErrorProps(), error),
+          ),
+      ),
     ),
   )
