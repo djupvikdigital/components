@@ -1,6 +1,6 @@
 {
   "name": "react-input-feedback",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Form field component with feedback",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,6 +16,7 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "react-final-form",
     "field",
     "input",
