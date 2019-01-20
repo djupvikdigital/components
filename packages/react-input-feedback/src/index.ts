@@ -3,6 +3,7 @@ import {
   ComponentElement,
   ComponentType,
   createElement as r,
+  Fragment,
   ReactElement,
   ReactPortal,
   SFCElement,
@@ -13,7 +14,6 @@ import SequentialId, { ISequentialIdProps } from 'react-sequential-id'
 export interface InputComponents {
   error?: ComponentType<any>
   input?: ComponentType<any>
-  wrapper?: ComponentType<any>
 }
 
 export interface ComponentsProp {
@@ -40,14 +40,13 @@ export default function InputFeedback({
   const components = {
     error: 'span',
     input: 'input',
-    wrapper: 'span',
     ...c,
   }
   const { error, touched } = meta
   const showError = touched && !!error
   return r(SequentialId, {}, (errorId: string) =>
     r(
-      components.wrapper,
+      Fragment,
       {},
       r(components.input, {
         'aria-describedby': showError ? errorId : null,

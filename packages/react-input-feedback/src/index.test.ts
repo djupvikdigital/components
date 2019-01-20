@@ -25,7 +25,11 @@ configure({ adapter: new Adapter() })
 describe('Input', () => {
   test('shows an error message', () => {
     const wrapper = render(
-      r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+      r(
+        'div',
+        {},
+        r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+      ),
     )
     expect(
       wrapper
@@ -37,7 +41,11 @@ describe('Input', () => {
 
   test('sets aria-invalid to true when provided an error', () => {
     const wrapper = render(
-      r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+      r(
+        'div',
+        {},
+        r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+      ),
     )
     expect(
       wrapper
@@ -49,7 +57,7 @@ describe('Input', () => {
 
   test('sets aria-invalid to false when not provided an error', () => {
     const wrapper = render(
-      r(Input, createInputProps({ meta: { touched: true } })),
+      r('div', {}, r(Input, createInputProps({ meta: { touched: true } }))),
     )
     expect(
       wrapper
@@ -61,7 +69,14 @@ describe('Input', () => {
 
   test('sets aria-invalid to false when not touched', () => {
     const wrapper = render(
-      r(Input, createInputProps({ meta: { error: 'error', touched: false } })),
+      r(
+        'div',
+        {},
+        r(
+          Input,
+          createInputProps({ meta: { error: 'error', touched: false } }),
+        ),
+      ),
     )
     expect(
       wrapper
@@ -73,7 +88,11 @@ describe('Input', () => {
 
   test('sets aria-describedby and error component id', () => {
     const wrapper = render(
-      r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+      r(
+        'div',
+        {},
+        r(Input, createInputProps({ meta: { error: 'error', touched: true } })),
+      ),
     )
     const describedby = wrapper
       .children()
