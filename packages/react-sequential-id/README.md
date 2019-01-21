@@ -94,6 +94,6 @@ const id = idFactory() // id === 'i0'
 
 ## Legal
 
-Copyright © 2017, 2018 Reidar Djupvik
+Copyright © 2017-2019 Reidar Djupvik
 
 Licensed under the MIT license. See the `LICENSE` file for details.
