@@ -54,7 +54,7 @@ export const InputFeedback: FC<InputFeedbackProps> = function InputFeedback({
   const showError = Boolean(touched && !!error)
   return r(SequentialId, {}, (errorId: string) => {
     const options = {
-      error,
+      error: showError ? error : null,
       getErrorProps: getErrorProps(errorId),
       getInputProps: getInputProps(showError, errorId, inputProps),
     }

@@ -158,4 +158,48 @@ describe('Input', () => {
     expect(describedby).toBeDefined()
     expect(describedby).toBe(errorElement.attr('id'))
   })
+
+  test('provides the error when the field is touched', () => {
+    const callback = jest.fn()
+    const className = 'foo'
+    const error = 'error'
+    render(
+      r(
+        'div',
+        {},
+        r(
+          InputFeedback,
+          createInputProps({
+            className,
+            meta: { error, touched: true },
+          }),
+          callback,
+        ),
+      ),
+    )
+    expect(callback.mock.calls.length).toBe(1)
+    expect(callback.mock.calls[0][0].error).toBe(error)
+  })
+
+  test('provides no error when the field is not touched', () => {
+    const callback = jest.fn()
+    const className = 'foo'
+    const error = 'error'
+    render(
+      r(
+        'div',
+        {},
+        r(
+          InputFeedback,
+          createInputProps({
+            className,
+            meta: { error, touched: false },
+          }),
+          callback,
+        ),
+      ),
+    )
+    expect(callback.mock.calls.length).toBe(1)
+    expect(callback.mock.calls[0][0].error).toBeNull()
+  })
 })
