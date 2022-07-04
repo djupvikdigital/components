@@ -5,10 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
     "build": "tsc",
     "lint": "tslint --project tsconfig.json",
-    "postinstall": "npm run bootstrap",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest"
   },
@@ -27,6 +25,11 @@
       "json"
     ]
   },
+  "workspaces": {
+      "packages": [
+        "packages/*"
+      ]
+    },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@storybook/react": "^4.1.7",
