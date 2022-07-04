@@ -25,11 +25,9 @@
       "json"
     ]
   },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@storybook/react": "^4.1.7",
