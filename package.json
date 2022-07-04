@@ -26,10 +26,10 @@
     ]
   },
   "workspaces": {
-      "packages": [
-        "packages/*"
-      ]
-    },
+    "packages": [
+      "packages/*"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@storybook/react": "^4.1.7",
@@ -42,7 +42,6 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "jest": "^23.6.0",
-    "lerna": "^3.10.6",
     "ramda": "^0.26.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
