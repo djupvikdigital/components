@@ -29,16 +29,16 @@
   },
   "homepage": "https://github.com/thirdhand/components#readme",
   "devDependencies": {
-    "react": "^16.7.0",
-    "react-sequential-id": "^3.1.1",
-    "typescript": "^3.2.4"
+    "react": "^18.2.0",
+    "react-sequential-id": "workspace:*",
+    "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "react": "^16.7.0",
-    "react-sequential-id": "^3.1.1"
+    "react": "^18.2.0",
+    "react-sequential-id": "workspace:*"
   },
   "dependencies": {
-    "final-form": "^4.11.0",
-    "react-final-form": "^4.0.2"
+    "final-form": "^4.20.7",
+    "react-final-form": "^6.5.9"
   }
 }

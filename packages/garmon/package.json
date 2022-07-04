@@ -30,10 +30,10 @@
   "homepage": "https://github.com/thirdhand/components#readme",
   "devDependencies": {
     "@types/react": "^16.7.20",
-    "react": "^16.7.0",
-    "typescript": "^3.2.4"
+    "react": "^18.2.0",
+    "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "react": "^16.7.0"
+    "react": "^18.2.0"
   }
 }
