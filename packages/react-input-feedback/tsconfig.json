@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "outDir": "./lib"
+    "composite": true,
+    "outDir": "./lib",
+    "rootDir": "./src"
   },
   "extends": "../../tsconfig.json",
   "include": [
     "./src/"
+  ],
+  "references": [
+    { "path": "../react-sequential-id/" }
   ]
 }

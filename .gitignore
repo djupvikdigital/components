@@ -1,6 +1,7 @@
 node_modules
 lib
 *.log
+*.tsbuildinfo
 .pnp.*
 .yarn/*
 !.yarn/patches
