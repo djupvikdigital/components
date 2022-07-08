@@ -24,7 +24,8 @@ export type StateAndHelpers = PropGetters & State
 
 export type RenderCallback = (stateAndHelpers: StateAndHelpers) => ReactNode
 
-export interface InputFeedbackProps extends FieldRenderProps {
+export interface InputFeedbackProps
+  extends FieldRenderProps<string, HTMLInputElement> {
   children?: RenderCallback
   render?: RenderCallback
 }
