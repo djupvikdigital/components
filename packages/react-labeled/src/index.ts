@@ -1,41 +1,43 @@
 import {
   createElement as r,
-  HTMLAttributes,
+  ComponentType,
+  FC,
   LabelHTMLAttributes,
   ReactNode,
-  ReactType,
-  SFC,
 } from 'react'
 import SequentialId from 'react-sequential-id'
 import { wrapDisplayName } from 'recompose'
 
-export interface ILabeledProps {
-  component?: ReactType
+interface WrapperProps {
   hidden?: boolean
+}
+
+export interface LabeledProps extends WrapperProps {
+  children?: ReactNode
+  component?: ComponentType<WrapperProps> | string
   label?: ReactNode
 }
 
-export type LabeledProps<P> = ILabeledProps & P
-
-export default function labeled<P = {}>(
-  BaseComponent: ReactType<P & HTMLAttributes<any>>,
-  LabelComponent: ReactType<LabelHTMLAttributes<any>> = 'label',
-): SFC<LabeledProps<P>> {
-  const LabeledComponent: SFC<LabeledProps<P>> = ({
+export default function labeled<P>(
+  BaseComponent: ComponentType<Omit<P, keyof LabeledProps>> | string,
+  LabelComponent: ComponentType<LabelHTMLAttributes<any>> | string = 'label',
+): FC<LabeledProps & P> {
+  const LabeledComponent: FC<LabeledProps & P> = ({
     children,
     component = 'p',
     hidden,
     label,
     ...props
-  }: any) =>
-    r(SequentialId, {}, (id: string) =>
-      r(
-        component,
-        { hidden },
-        r(LabelComponent, { htmlFor: id }, label || children),
-        r(BaseComponent, { id, ...props }, label && children),
-      ),
-    )
+  }) =>
+    r(SequentialId, {
+      children: (id: string) =>
+        r(
+          component,
+          { hidden },
+          r(LabelComponent, { htmlFor: id }, label || children),
+          r(BaseComponent, { id, ...props }, label && children),
+        ),
+    })
   LabeledComponent.displayName = wrapDisplayName(
     BaseComponent as any,
     'labeled',

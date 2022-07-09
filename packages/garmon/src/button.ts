@@ -1,7 +1,6 @@
 import {
   ButtonHTMLAttributes,
   createElement as r,
-  FunctionComponent,
   MouseEvent,
   ReactNode,
 } from 'react'
@@ -13,42 +12,37 @@ import {
 
 type RenderCallback = (expanded: boolean) => ReactNode
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps {
   children?: RenderCallback
   render?: RenderCallback
 }
 
-const Button: FunctionComponent<ButtonProps> = function Button({
+function Button({
   children,
   onClick,
   onKeyDown,
   render,
   ...props
-}) {
-  return r(
-    CollapsibleContext.Consumer as any,
-    null,
-    ({ expanded, toggle }: CollapsibleContextValue) =>
-      r(
-        'button',
-        {
-          'aria-expanded': expanded,
-          onClick: onClick
-            ? (event: MouseEvent<HTMLButtonElement>) => {
-                onClick(event)
-                toggle()
-              }
-            : toggle,
-          type: 'button',
-          ...props,
-        },
-        render
+}: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
+  return r(CollapsibleContext.Consumer as any, {
+    children: ({ expanded, toggle }: CollapsibleContextValue) =>
+      r('button', {
+        'aria-expanded': expanded,
+        children: render
           ? render(expanded)
           : typeof children === 'function'
           ? children(expanded)
           : children,
-      ),
-  )
+        onClick: onClick
+          ? (event: MouseEvent<HTMLButtonElement>) => {
+              onClick(event)
+              toggle()
+            }
+          : toggle,
+        type: 'button',
+        ...props,
+      }),
+  })
 }
 
 export { Button }

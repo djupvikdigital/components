@@ -1,70 +1,70 @@
-import { configure, render } from 'enzyme'
-import Adapter = require('enzyme-adapter-react-16')
+import { render } from '@testing-library/react'
 import { times } from 'ramda'
 import { createElement as r } from 'react'
 import uniqueid = require('uniqueid')
 
 import { Consumer, IdProvider, SequentialId } from './'
 
-configure({ adapter: new Adapter() })
-
 describe('react-sequential-id', () => {
   describe('Consumer', () => {
     it('exposes the id factory function', () => {
-      const rendered = render(
+      const callback = jest.fn()
+      render(
         r(
           IdProvider,
           { factory: uniqueid('test') },
           r(Consumer, {
-            children: (factory: () => string) => r('div', {}, factory()),
+            children: (factory: () => string) => callback(factory()),
           }),
         ),
       )
-      expect(rendered.eq(0).text()).toBe('test0')
+      expect(callback.mock.calls[0][0]).toBe('test0')
     })
   })
 
   describe('IdProvider', () => {
     it('takes a factory prop', () => {
       const factory = uniqueid('test')
-      const rendered = render(
+      const callback = jest.fn()
+      render(
         r(
           IdProvider,
           { factory },
-          r(SequentialId, {}, (id: string) => r('div', {}, id)),
+          r(SequentialId, { children: (id: string) => callback(id) }),
         ),
       )
-      expect(rendered.eq(0).text()).toBe('test0')
+      expect(callback.mock.calls[0][0]).toBe('test0')
     })
   })
 
   describe('SequentialId', () => {
     it('renders unique ids', () => {
-      const rendered = render(
+      const callback = jest.fn()
+      render(
         r(
           'div',
           {},
-          r(SequentialId, {}, (id: string) => r('div', {}, id)),
-          r(SequentialId, {}, (id: string) => r('div', {}, id)),
+          r(SequentialId, { children: (id: string) => callback(id) }),
+          r(SequentialId, { children: (id: string) => callback(id) }),
         ),
       )
-      const children = rendered.eq(0).children()
-      expect(children.eq(0).text()).not.toBe(children.eq(1).text())
+      expect(callback.mock.calls[0][0]).not.toBe(callback.mock.calls[1][0])
     })
 
     it('renders the same every time', () => {
-      const ids = times(
+      const callback = jest.fn()
+      times(
         () =>
           render(
             r(
               IdProvider,
               {},
-              r(SequentialId, {}, (id: string) => r('div', {}, id)),
+              r(SequentialId, { children: (id: string) => callback(id) }),
             ),
           ),
         2,
-      ).map(rendered => rendered.eq(0).text())
-      expect(ids[0]).toBe(ids[1])
+      )
+      expect(callback.mock.calls[0][0]).toBe(callback.mock.calls[1][0])
     })
   })
 })

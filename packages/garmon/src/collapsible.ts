@@ -1,8 +1,9 @@
-import { Component, createElement as r } from 'react'
+import { Component, createElement as r, ReactNode } from 'react'
 
 import { CollapsibleContext } from './collapsible-context'
 
 export interface CollapsibleProps {
+  children?: ReactNode
   expanded?: boolean
   initialExpanded?: boolean
   onToggle?: (expanded: boolean) => void

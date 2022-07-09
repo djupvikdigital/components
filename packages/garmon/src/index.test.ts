@@ -1,14 +1,12 @@
-import { configure, mount, render } from 'enzyme'
-import * as Adapter from 'enzyme-adapter-react-16'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { createElement as r } from 'react'
 
 import { Accordion, AccordionItem, Body, Button, Collapsible } from './index'
 
-configure({ adapter: new Adapter() })
-
 describe('Accordion', () => {
   it('defaults to no panels being expanded', () => {
-    const wrapper = render(
+    render(
       r(
         'div',
         {},
@@ -20,22 +18,13 @@ describe('Accordion', () => {
         ),
       ),
     )
-    expect(
-      wrapper
-        .children()
-        .eq(0)
-        .attr('aria-expanded'),
-    ).toBe('false')
-    expect(
-      wrapper
-        .children()
-        .eq(1)
-        .attr('aria-expanded'),
-    ).toBe('false')
+    const buttons = screen.getAllByRole('button')
+    expect(buttons[0].getAttribute('aria-expanded')).toBe('false')
+    expect(buttons[1].getAttribute('aria-expanded')).toBe('false')
   })
 
-  it('closes one panel when the other is expanded', () => {
-    const wrapper = mount(
+  it('closes one panel when the other is expanded', async () => {
+    render(
       r(
         'div',
         {},
@@ -47,20 +36,15 @@ describe('Accordion', () => {
         ),
       ),
     )
-    const div = wrapper.childAt(0)
-    const second = div.childAt(1)
-    second.simulate('click')
-    expect(
-      div
-        .childAt(0)
-        .getDOMNode()
-        .getAttribute('aria-expanded'),
-    ).toBe('false')
-    expect(second.getDOMNode().getAttribute('aria-expanded')).toBe('true')
+    const user = userEvent.setup()
+    const buttons = screen.getAllByRole('button')
+    await user.click(buttons[1])
+    expect(buttons[0].getAttribute('aria-expanded')).toBe('false')
+    expect(buttons[1].getAttribute('aria-expanded')).toBe('true')
   })
 
-  it('allows the open panel to be collapsed, leaving none expanded', () => {
-    const wrapper = mount(
+  it('allows the open panel to be collapsed, leaving none expanded', async () => {
+    render(
       r(
         'div',
         {},
@@ -72,20 +56,15 @@ describe('Accordion', () => {
         ),
       ),
     )
-    const div = wrapper.childAt(0)
-    const first = div.childAt(0)
-    first.simulate('click')
-    expect(first.getDOMNode().getAttribute('aria-expanded')).toBe('false')
-    expect(
-      div
-        .childAt(1)
-        .getDOMNode()
-        .getAttribute('aria-expanded'),
-    ).toBe('false')
+    const user = userEvent.setup()
+    const buttons = screen.getAllByRole('button')
+    await user.click(buttons[0])
+    expect(buttons[0].getAttribute('aria-expanded')).toBe('false')
+    expect(buttons[1].getAttribute('aria-expanded')).toBe('false')
   })
 
   it('takes an initialExpandedIndex prop', () => {
-    const wrapper = render(
+    render(
       r(
         'div',
         {},
@@ -97,22 +76,13 @@ describe('Accordion', () => {
         ),
       ),
     )
-    expect(
-      wrapper
-        .children()
-        .eq(0)
-        .attr('aria-expanded'),
-    ).toBe('false')
-    expect(
-      wrapper
-        .children()
-        .eq(1)
-        .attr('aria-expanded'),
-    ).toBe('true')
+    const buttons = screen.getAllByRole('button')
+    expect(buttons[0].getAttribute('aria-expanded')).toBe('false')
+    expect(buttons[1].getAttribute('aria-expanded')).toBe('true')
   })
 
-  it('does nothing when controlled with the expandedIndex prop', () => {
-    const wrapper = mount(
+  it('does nothing when controlled with the expandedIndex prop', async () => {
+    render(
       r(
         'div',
         {},
@@ -124,21 +94,16 @@ describe('Accordion', () => {
         ),
       ),
     )
-    const div = wrapper.childAt(0)
-    const second = div.childAt(1)
-    second.simulate('click')
-    expect(
-      div
-        .childAt(0)
-        .getDOMNode()
-        .getAttribute('aria-expanded'),
-    ).toBe('true')
-    expect(second.getDOMNode().getAttribute('aria-expanded')).toBe('false')
+    const user = userEvent.setup()
+    const buttons = screen.getAllByRole('button')
+    await user.click(buttons[1])
+    expect(buttons[0].getAttribute('aria-expanded')).toBe('true')
+    expect(buttons[1].getAttribute('aria-expanded')).toBe('false')
   })
 
-  it('takes an onToggle callback prop', () => {
+  it('takes an onToggle callback prop', async () => {
     const onToggle = jest.fn()
-    const wrapper = mount(
+    render(
       r(
         'div',
         {},
@@ -150,16 +115,16 @@ describe('Accordion', () => {
         ),
       ),
     )
-    const div = wrapper.childAt(0)
-    const second = div.childAt(1)
-    second.simulate('click')
+    const user = userEvent.setup()
+    const buttons = screen.getAllByRole('button')
+    await user.click(buttons[1])
     expect(onToggle.mock.calls.length).toBe(1)
     expect(onToggle.mock.calls[0][0]).toBe(1)
   })
 
-  it('calls onToggle when controlled', () => {
+  it('calls onToggle when controlled', async () => {
     const onToggle = jest.fn()
-    const wrapper = mount(
+    render(
       r(
         'div',
         {},
@@ -171,9 +136,9 @@ describe('Accordion', () => {
         ),
       ),
     )
-    const div = wrapper.childAt(0)
-    const second = div.childAt(1)
-    second.simulate('click')
+    const user = userEvent.setup()
+    const buttons = screen.getAllByRole('button')
+    await user.click(buttons[1])
     expect(onToggle.mock.calls.length).toBe(1)
     expect(onToggle.mock.calls[0][0]).toBe(1)
   })
@@ -181,77 +146,79 @@ describe('Accordion', () => {
 
 describe('Body', () => {
   it('has the hidden attribute set when not expanded', () => {
-    const wrapper = render(r(Collapsible, { initialExpanded: false }, r(Body)))
-    expect(wrapper.attr('hidden')).toBe('hidden')
+    const wrapper = render(
+      r(Collapsible, { initialExpanded: false }, r(Body, { className: 'foo' })),
+    )
+    const element = wrapper.container.getElementsByClassName('foo')[0]
+    expect(element.hasAttribute('hidden')).toBe(true)
   })
 
   it('does not have the hidden attribute when expanded', () => {
-    const wrapper = render(r(Collapsible, { initialExpanded: true }, r(Body)))
-    expect(wrapper.attr('hidden')).toBeUndefined()
+    const wrapper = render(
+      r(Collapsible, { initialExpanded: true }, r(Body, { className: 'foo' })),
+    )
+    expect(
+      wrapper.container.getElementsByClassName('foo')[0].getAttribute('hidden'),
+    ).toBeNull()
   })
 })
 
 describe('Button', () => {
   it('has the aria-expanded attribute set to false when not expanded', () => {
-    const wrapper = render(
-      r(Collapsible, { initialExpanded: false }, r(Button)),
+    render(r(Collapsible, { initialExpanded: false }, r(Button)))
+    expect(screen.getByRole('button').getAttribute('aria-expanded')).toBe(
+      'false',
     )
-    expect(wrapper.attr('aria-expanded')).toBe('false')
   })
 
   it('has the aria-expanded attribute set to true when expanded', () => {
-    const wrapper = render(r(Collapsible, { initialExpanded: true }, r(Button)))
-    expect(wrapper.attr('aria-expanded')).toBe('true')
+    render(r(Collapsible, { initialExpanded: true }, r(Button)))
+    expect(screen.getByRole('button').getAttribute('aria-expanded')).toBe(
+      'true',
+    )
   })
 
-  it('sets the aria-expanded attribute to true on click when not expanded', () => {
-    const wrapper = mount(r(Collapsible, { initialExpanded: false }, r(Button)))
-    wrapper.simulate('click')
-    expect(
-      wrapper
-        .childAt(0)
-        .getDOMNode()
-        .getAttribute('aria-expanded'),
-    ).toBe('true')
+  it('sets the aria-expanded attribute to true on click when not expanded', async () => {
+    render(r(Collapsible, { initialExpanded: false }, r(Button)))
+    const user = userEvent.setup()
+    const button = screen.getByRole('button')
+    await user.click(button)
+    expect(button.getAttribute('aria-expanded')).toBe('true')
   })
 
-  it('sets the aria-expanded attribute to false on click when expanded', () => {
-    const wrapper = mount(r(Collapsible, { initialExpanded: true }, r(Button)))
-    wrapper.simulate('click')
-    expect(
-      wrapper
-        .childAt(0)
-        .getDOMNode()
-        .getAttribute('aria-expanded'),
-    ).toBe('false')
+  it('sets the aria-expanded attribute to false on click when expanded', async () => {
+    render(r(Collapsible, { initialExpanded: true }, r(Button)))
+    const user = userEvent.setup()
+    const button = screen.getByRole('button')
+    await user.click(button)
+    expect(button.getAttribute('aria-expanded')).toBe('false')
   })
 })
 
 describe('Collapsible', () => {
-  it('does nothing when controlled with the expanded prop', () => {
-    const wrapper = mount(r(Collapsible, { expanded: false }, r(Button)))
-    wrapper.simulate('click')
-    expect(
-      wrapper
-        .childAt(0)
-        .getDOMNode()
-        .getAttribute('aria-expanded'),
-    ).toBe('false')
+  it('does nothing when controlled with the expanded prop', async () => {
+    render(r(Collapsible, { expanded: false }, r(Button)))
+    const user = userEvent.setup()
+    const button = screen.getByRole('button')
+    await user.click(button)
+    expect(button.getAttribute('aria-expanded')).toBe('false')
   })
 
-  it('takes an onToggle callback prop', () => {
+  it('takes an onToggle callback prop', async () => {
     const onToggle = jest.fn()
-    const wrapper = mount(r(Collapsible, { onToggle }, r(Button)))
-    wrapper.simulate('click')
+    render(r(Collapsible, { onToggle }, r(Button)))
+    const user = userEvent.setup()
+    const button = screen.getByRole('button')
+    await user.click(button)
     expect(onToggle.mock.calls.length).toBe(1)
   })
 
-  it('calls onToggle when controlled', () => {
+  it('calls onToggle when controlled', async () => {
     const onToggle = jest.fn()
-    const wrapper = mount(
-      r(Collapsible, { expanded: false, onToggle }, r(Button)),
-    )
-    wrapper.simulate('click')
+    render(r(Collapsible, { expanded: false, onToggle }, r(Button)))
+    const user = userEvent.setup()
+    const button = screen.getByRole('button')
+    await user.click(button)
     expect(onToggle.mock.calls.length).toBe(1)
   })
 })

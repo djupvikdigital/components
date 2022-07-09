@@ -1,9 +1,10 @@
-import { Component, createElement as r } from 'react'
+import { Component, createElement as r, ReactNode } from 'react'
 
 import { AccordionContext } from './accordion-context'
 import { createNumberFactory } from './create-number-factory'
 
 export interface AccordionProps {
+  children?: ReactNode,
   expandedIndex?: number
   initialExpandedIndex?: number
   onToggle?: (expandedIndex: number) => void

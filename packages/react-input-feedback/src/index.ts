@@ -1,4 +1,4 @@
-import { createElement as r, FC, Fragment, ReactNode } from 'react'
+import { createElement as r, Fragment, ReactNode } from 'react'
 import { FieldRenderProps } from 'react-final-form'
 import SequentialId from 'react-sequential-id'
 
@@ -43,33 +43,35 @@ function getInputProps(showError: boolean, errorId: string, props: object) {
   })
 }
 
-export const InputFeedback: FC<InputFeedbackProps> = function InputFeedback({
+export function InputFeedback({
   children,
   input,
   meta = { error: null, touched: false },
   render,
   ...props
-}) {
+}: InputFeedbackProps) {
   const inputProps = { ...props, ...input }
   const { error, touched } = meta
   const showError = Boolean(touched && !!error)
-  return r(SequentialId, {}, (errorId: string) => {
-    const options = {
-      error: showError ? error : null,
-      getErrorProps: getErrorProps(errorId),
-      getInputProps: getInputProps(showError, errorId, inputProps),
-    }
-    if (typeof render === 'function') {
-      return render(options)
-    }
-    if (typeof children === 'function') {
-      return children(options)
-    }
-    return r(
-      Fragment,
-      {},
-      r('input', options.getInputProps()),
-      showError && r('span', options.getErrorProps(), error),
-    )
+  return r(SequentialId, {
+    children: (errorId: string) => {
+      const options = {
+        error: showError ? error : null,
+        getErrorProps: getErrorProps(errorId),
+        getInputProps: getInputProps(showError, errorId, inputProps),
+      }
+      if (typeof render === 'function') {
+        return render(options)
+      }
+      if (typeof children === 'function') {
+        return children(options)
+      }
+      return r(
+        Fragment,
+        {},
+        r('input', options.getInputProps()),
+        showError && r('span', options.getErrorProps(), error),
+      )
+    },
   })
 }

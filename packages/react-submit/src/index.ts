@@ -7,7 +7,7 @@ export interface ComponentProp {
 
 export type ButtonProps = React.HTMLProps<HTMLButtonElement>
 export type SubmitButtonProps = ButtonProps & ComponentProp &
-  FieldRenderProps<true, HTMLElement>
+  FieldRenderProps<string, HTMLElement>
 
 const r = React.createElement
 

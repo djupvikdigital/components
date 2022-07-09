@@ -8,10 +8,8 @@ import {
 export type BodyProps = HTMLAttributes<HTMLDivElement>
 
 export const Body: FunctionComponent<BodyProps> = function Body(props) {
-  return r(
-    CollapsibleContext.Consumer as any,
-    null,
-    ({ expanded }: CollapsibleContextValue) =>
+  return r(CollapsibleContext.Consumer as any, {
+    children: ({ expanded }: CollapsibleContextValue) =>
       r('div', { hidden: !expanded, ...props }, props.children),
-  )
+  })
 }

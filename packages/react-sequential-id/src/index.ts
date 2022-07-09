@@ -5,22 +5,19 @@ import {
   ConsumerProps,
   createContext,
   createElement as r,
-  Props,
   ProviderProps,
-  ReactElement,
+  ReactNode,
   ReactPortal,
-  SFC,
-  SFCElement,
-  StatelessComponent,
 } from 'react'
 import uniqueid = require('uniqueid')
 
 export interface IIdProviderProps {
+  children?: ReactNode
   factory?: () => string
 }
 
 export interface ISequentialIdProps {
-  children?: (id: string) => ReactElement<any> | null
+  children?: (id: string) => ReactNode
 }
 
 export {
@@ -30,22 +27,18 @@ export {
   ConsumerProps,
   ProviderProps,
   ReactPortal,
-  SFCElement,
-  StatelessComponent,
 }
 
 const IdContext = createContext(createIdFactory())
 
 export const { Consumer } = IdContext
 
-export function IdProvider(props: IIdProviderProps & Props<{}>) {
+export function IdProvider(props: IIdProviderProps) {
   const { children, factory = createIdFactory() } = props
   return r(IdContext.Provider, { value: factory }, children)
 }
 
-export const SequentialId: SFC<ISequentialIdProps> = function SequentialId({
-  children = () => null,
-}) {
+export function SequentialId({ children }: ISequentialIdProps) {
   if (typeof children !== 'function') {
     return null
   }
