@@ -30,7 +30,7 @@
     "recompose": "^0.30.0"
   },
   "devDependencies": {
-    "@types/recompose": "^0.30.2",
+    "@types/recompose": "^0.30.10",
     "react": "^18.2.0",
     "react-sequential-id": "workspace:^",
     "typescript": "^4.7.4"
