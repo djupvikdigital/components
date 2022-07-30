@@ -2948,7 +2948,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react@npm:*, @storybook/react@npm:^6.5.9":
+"@storybook/react@npm:^6.5.9":
   version: 6.5.9
   resolution: "@storybook/react@npm:6.5.9"
   dependencies:
@@ -3544,15 +3544,6 @@ __metadata:
   version: 2.0.1
   resolution: "@types/stack-utils@npm:2.0.1"
   checksum: 205fdbe3326b7046d7eaf5e494d8084f2659086a266f3f9cf00bccc549c8e36e407f88168ad4383c8b07099957ad669f75f2532ed4bc70be2b037330f7bae019
-  languageName: node
-  linkType: hard
-
-"@types/storybook__react@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "@types/storybook__react@npm:5.2.1"
-  dependencies:
-    "@storybook/react": "*"
-  checksum: 44538d6247098e5f25722b265df495d7bc0e4b2d1bac9ab812672914c7493554e4dcbedecb4ad5199ffa82c44d84bdcc4bc07ed24017bca4fdc67ae9473ff7df
   languageName: node
   linkType: hard
 
@@ -5685,7 +5676,6 @@ __metadata:
     "@types/jest": ^28.1.6
     "@types/ramda": ^0.28.15
     "@types/react-test-renderer": ^18.0.0
-    "@types/storybook__react": ^5.2.1
     babel-loader: ^8.2.5
     is-ci: ^3.0.1
     jest: ^28.1.3
