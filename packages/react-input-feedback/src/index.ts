@@ -1,6 +1,5 @@
-import { createElement as r, Fragment, ReactNode } from 'react'
+import { createElement as r, Fragment, ReactNode, useId } from 'react'
 import { FieldRenderProps } from 'react-final-form'
-import SequentialId from 'react-sequential-id'
 
 export interface ErrorProps {
   id: string
@@ -50,28 +49,25 @@ export function InputFeedback({
   render,
   ...props
 }: InputFeedbackProps) {
+  const errorId = useId()
   const inputProps = { ...props, ...input }
   const { error, touched } = meta
   const showError = Boolean(touched && !!error)
-  return r(SequentialId, {
-    children: (errorId: string) => {
-      const options = {
-        error: showError ? error : null,
-        getErrorProps: getErrorProps(errorId),
-        getInputProps: getInputProps(showError, errorId, inputProps),
-      }
-      if (typeof render === 'function') {
-        return render(options)
-      }
-      if (typeof children === 'function') {
-        return children(options)
-      }
-      return r(
-        Fragment,
-        {},
-        r('input', options.getInputProps()),
-        showError && r('span', options.getErrorProps(), error),
-      )
-    },
-  })
+  const options = {
+    error: showError ? error : null,
+    getErrorProps: getErrorProps(errorId),
+    getInputProps: getInputProps(showError, errorId, inputProps),
+  }
+  if (typeof render === 'function') {
+    return r(Fragment, {}, render(options))
+  }
+  if (typeof children === 'function') {
+    return r(Fragment, {}, children(options))
+  }
+  return r(
+    Fragment,
+    {},
+    r('input', options.getInputProps()),
+    showError && r('span', options.getErrorProps(), error),
+  )
 }
