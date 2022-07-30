@@ -11907,11 +11907,9 @@ __metadata:
     final-form: ^4.20.7
     react: ^18.2.0
     react-final-form: ^6.5.9
-    react-sequential-id: "workspace:*"
     typescript: ^4.7.4
   peerDependencies:
     react: ^18.2.0
-    react-sequential-id: "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -11965,7 +11963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-sequential-id@workspace:*, react-sequential-id@workspace:^, react-sequential-id@workspace:packages/react-sequential-id":
+"react-sequential-id@workspace:^, react-sequential-id@workspace:packages/react-sequential-id":
   version: 0.0.0-use.local
   resolution: "react-sequential-id@workspace:packages/react-sequential-id"
   dependencies:
