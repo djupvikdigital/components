@@ -4,8 +4,8 @@ import {
   FC,
   LabelHTMLAttributes,
   ReactNode,
+  useId,
 } from 'react'
-import SequentialId from 'react-sequential-id'
 import { wrapDisplayName } from 'recompose'
 
 interface WrapperProps {
@@ -28,16 +28,15 @@ export default function labeled<P>(
     hidden,
     label,
     ...props
-  }) =>
-    r(SequentialId, {
-      children: (id: string) =>
-        r(
-          component,
-          { hidden },
-          r(LabelComponent, { htmlFor: id }, label || children),
-          r(BaseComponent, { id, ...props }, label && children),
-        ),
-    })
+  }) => {
+    const id = useId()
+    return r(
+      component,
+      { hidden },
+      r(LabelComponent, { htmlFor: id }, label || children),
+      r(BaseComponent, { id, ...props }, label && children),
+    )
+  }
   LabeledComponent.displayName = wrapDisplayName(
     BaseComponent as any,
     'labeled',
