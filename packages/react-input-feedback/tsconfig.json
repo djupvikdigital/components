@@ -7,8 +7,5 @@
   "extends": "../../tsconfig.json",
   "include": [
     "./src/"
-  ],
-  "references": [
-    { "path": "../react-sequential-id/" }
   ]
 }
