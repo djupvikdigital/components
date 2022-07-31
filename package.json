@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --build",
+    "clean": "tsc --build --clean",
     "lint": "tslint --project tsconfig.json",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest"
