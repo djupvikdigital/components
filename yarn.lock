@@ -11940,12 +11940,10 @@ __metadata:
   dependencies:
     "@types/recompose": ^0.30.10
     react: ^18.2.0
-    react-sequential-id: "workspace:^"
     recompose: ^0.30.0
     typescript: ^4.7.4
   peerDependencies:
     react: ^18.2.0
-    react-sequential-id: "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -11963,7 +11961,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-sequential-id@workspace:^, react-sequential-id@workspace:packages/react-sequential-id":
+"react-sequential-id@workspace:packages/react-sequential-id":
   version: 0.0.0-use.local
   resolution: "react-sequential-id@workspace:packages/react-sequential-id"
   dependencies:
