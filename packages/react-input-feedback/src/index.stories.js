@@ -3,7 +3,7 @@ import { createElement as r, Fragment } from 'react'
 import { Client } from 'styletron-engine-atomic'
 import { Provider, styled } from 'styletron-react'
 
-import Input from './index.ts'
+import { InputFeedback } from './index.ts'
 
 const styletron = new Client()
 
@@ -23,15 +23,17 @@ const StyledInput = styled('input', ({ 'aria-invalid': invalid }) => ({
 }))
 
 storiesOf('InputFeedback', module)
-  .add('default', () => r(Input))
+  .add('default', () => r(InputFeedback))
   .add('with error', () =>
-    r(Input, { meta: { error: 'Error text', touched: true } }),
+    r(InputFeedback, { meta: { error: 'Error text', touched: true } }),
   )
   .add('styled', () =>
     r(
       Provider,
       { value: styletron },
-      r(Input, {}, ({ getInputProps }) => r(StyledInput, getInputProps())),
+      r(InputFeedback, {}, ({ getInputProps }) =>
+        r(StyledInput, getInputProps()),
+      ),
     ),
   )
   .add('styled with error', () =>
@@ -39,7 +41,7 @@ storiesOf('InputFeedback', module)
       Provider,
       { value: styletron },
       r(
-        Input,
+        InputFeedback,
         {
           meta: { error: 'Error text', touched: true },
         },
