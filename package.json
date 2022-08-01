@@ -5,8 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "tsc --build",
-    "clean": "tsc --build --clean",
+    "build": "yarn workspaces foreach -pt run build",
+    "clean": "yarn workspaces foreach -p run clean",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "jest"
   },
