@@ -1,4 +1,3 @@
 .*
 *.stories.js
 tsconfig.json
-tslint.json
