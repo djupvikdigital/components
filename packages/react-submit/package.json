@@ -4,6 +4,11 @@
   "description": "React Final Form compatible submit button",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "/lib",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

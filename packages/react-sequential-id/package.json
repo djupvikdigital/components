@@ -4,6 +4,11 @@
   "description": "React component for generating sequential IDs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "/lib",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/thirdhand/components.git"

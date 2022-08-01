@@ -4,6 +4,11 @@
   "description": "HOC to add a label to a form field",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "/lib",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

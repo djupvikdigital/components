@@ -4,6 +4,7 @@
   "description": "Monorepo for React components",
   "private": true,
   "main": "index.js",
+  "files": [],
   "scripts": {
     "build": "yarn workspaces foreach -pt run build",
     "clean": "yarn workspaces foreach -p run clean",
