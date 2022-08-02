@@ -58,7 +58,6 @@
     { "path": "./packages/garmon/" },
     { "path": "./packages/react-input-feedback/" },
     { "path": "./packages/react-labeled/" },
-    { "path": "./packages/react-sequential-id/" },
     { "path": "./packages/react-submit/" }
   ]
 }
