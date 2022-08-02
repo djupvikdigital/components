@@ -11946,18 +11946,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-sequential-id@workspace:packages/react-sequential-id":
-  version: 0.0.0-use.local
-  resolution: "react-sequential-id@workspace:packages/react-sequential-id"
-  dependencies:
-    react: ^18.2.0
-    typescript: ^4.7.4
-    uniqueid: ^1.0.0
-  peerDependencies:
-    react: ^18.2.0
-  languageName: unknown
-  linkType: soft
-
 "react-submit@workspace:packages/react-submit":
   version: 0.0.0-use.local
   resolution: "react-submit@workspace:packages/react-submit"
@@ -13967,13 +13955,6 @@ __metadata:
   dependencies:
     imurmurhash: ^0.1.4
   checksum: 5b6876a645da08d505dedb970d1571f6cebdf87044cb6b740c8dbb24f0d6e1dc8bdbf46825fd09f994d7cf50760e6f6e063cfa197d51c5902c00a861702eb75a
-  languageName: node
-  linkType: hard
-
-"uniqueid@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "uniqueid@npm:1.0.0"
-  checksum: 912cee606b4d429c14fc8e6dc1125d8d794667fd83402a0c88498d972ff8f459e8f57ca61f5cb5f8154a93344b07c4dfde82ee616bdb853e194e68b6e082ee49
   languageName: node
   linkType: hard
 
