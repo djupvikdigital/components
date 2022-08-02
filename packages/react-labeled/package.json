@@ -1,6 +1,6 @@
 {
   "name": "react-labeled",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "HOC to add a label to a form field",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
