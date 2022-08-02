@@ -35,7 +35,8 @@ Note that the markup inserted by the components is really minimal. This is by
 design. Garmon is a bring your own markup and styling library, sacrificing some
 convenience for extra flexibility.
 
-`Collapsible` itself inserts no markup at all, leaving you free to wrap it in any element of you own choosing.
+`Collapsible` itself inserts no markup at all, leaving you free to wrap it in
+any element of you own choosing.
 
 #### Collapsible props
 
@@ -123,6 +124,6 @@ Again, neither `Accordion` nor `AccordionItem` insert any HTML markup.
 
 ## Legal
 
-Copyright © 2018 Reidar Djupvik
+Copyright © 2018, 2022 Reidar Djupvik
 
 Licensed under the MIT license. See the `LICENSE` file for details.

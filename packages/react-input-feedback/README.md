@@ -84,6 +84,6 @@ export default function FormComponent(props) {
 
 ## Legal
 
-Copyright © 2017-2019 Reidar Djupvik
+Copyright © 2017-2019, 2022 Reidar Djupvik
 
 Licensed under the MIT license. See the `LICENSE` file for details.
