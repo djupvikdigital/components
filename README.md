@@ -24,9 +24,8 @@ accept suggestions for improvements, bug reports and pull requests.
 To get started, please check out the repository, then run these commands:
 
 ```
-npm install
-npm run bootstrap
-npm test
+yarn install
+yarn test
 ```
 
 If everything goes smoothly, all the tests should pass.
