@@ -10,8 +10,11 @@ See the README of each package for more information of how to use the component.
 - [Garmon](packages/garmon) – accordions and collapsible sections
 - [React Input Feedback](packages/react-input-feedback)
 - [React Labeled](packages/react-labeled)
-- [React Sequential ID](packages/react-sequential-id)
 - [React Submit](packages/react-submit)
+
+Note: The package React Sequential Id is obsolete and has been removed. Use the
+[`useId` hook](https://reactjs.org/docs/hooks-reference.html#useid) introduced
+in React 18 instead.
 
 ## Contributing
 
