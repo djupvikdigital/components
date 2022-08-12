@@ -7,7 +7,7 @@ describe('labeled', () => {
   test('takes a base component and returns a component taking a label', () => {
     const component = labeled('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, { label: labelText }) as any)
+    const wrapper = render(r(component, { label: labelText }))
     const label = wrapper.container.getElementsByTagName('label')[0]
     const input = wrapper.container.getElementsByTagName('input')[0]
     const parent = input.parentElement
@@ -20,7 +20,7 @@ describe('labeled', () => {
   test('sets for and id attributes', () => {
     const component = labeled('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, { label: labelText }) as any)
+    const wrapper = render(r(component, { label: labelText }))
     const label = wrapper.container.getElementsByTagName('label')[0]
     const htmlFor = label.getAttribute('for')
     const input = wrapper.container.getElementsByTagName('input')[0]
@@ -31,7 +31,7 @@ describe('labeled', () => {
   test('renders children into label if label prop not provided', () => {
     const component = labeled('input')
     const labelText = 'Label'
-    const wrapper = render(r(component, {}, labelText) as any)
+    const wrapper = render(r(component, {}, labelText))
     const label = wrapper.container.getElementsByTagName('label')[0]
     expect(label.textContent).toBe(labelText)
   })
@@ -43,7 +43,7 @@ describe('labeled', () => {
       r(component, {
         hidden: true,
         label: labelText,
-      }) as any,
+      }),
     )
     const input = screen.getByLabelText(labelText)
     const parent = input.parentElement
@@ -55,7 +55,7 @@ describe('labeled', () => {
     const component = labeled<InputHTMLAttributes<any>>('input')
     const labelText = 'Label'
     const type = 'text'
-    render(r(component, { type, label: labelText }) as any)
+    render(r(component, { type, label: labelText }))
     const input = screen.getByLabelText(labelText)
     expect(input.getAttribute('type')).toBe(type)
   })
@@ -69,7 +69,7 @@ describe('labeled', () => {
     const component = labeled('select')
     const labelText = 'Label'
     const wrapper = render(
-      r(component, { label: labelText }, r('option', {}, 'Option')) as any,
+      r(component, { label: labelText }, r('option', {}, 'Option')),
     )
     const label = wrapper.container.getElementsByTagName('label')[0]
     const select = screen.getByLabelText(labelText)
@@ -80,7 +80,7 @@ describe('labeled', () => {
   test('will not render children as children if there is no label', () => {
     const component = labeled('select')
     const labelText = 'Label'
-    const wrapper = render(r(component, {}, labelText) as any)
+    const wrapper = render(r(component, {}, labelText))
     const label = wrapper.container.getElementsByTagName('label')[0]
     const select = screen.getByLabelText(labelText)
     expect(label.textContent).toBe(labelText)
