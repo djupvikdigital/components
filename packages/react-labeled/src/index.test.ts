@@ -86,4 +86,22 @@ describe('labeled', () => {
     expect(label.textContent).toBe(labelText)
     expect(select.innerHTML).toBe('')
   })
+
+  test('supports rendering a custom form component', () => {
+    const CustomInput = (props: { defaultValue: string; name: string }) =>
+      r('span', { className: 'custom-input' }, r('input', props))
+    const component =
+      labeled<{ defaultValue: string; name: string }>(CustomInput)
+    const labelText = 'Label'
+    const name = 'name'
+    const defaultValue = 'value'
+    const wrapper = render(r(component, { defaultValue, name }, labelText))
+    const label = wrapper.container.getElementsByTagName('label')[0]
+    const span = wrapper.container.getElementsByClassName('custom-input')[0]
+    const input = screen.getByLabelText(labelText)
+    expect(label.textContent).toBe(labelText)
+    expect(span.tagName.toLowerCase()).toBe('span')
+    expect(input.getAttribute('name')).toBe(name)
+    expect(input.getAttribute('value')).toBe(defaultValue)
+  })
 })
